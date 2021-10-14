@@ -1,5 +1,5 @@
 # Covid Alert PA
-#### App Permissions
+### App Permissions
   - Network Status
   - WiFi Status
   - Bluetooth
