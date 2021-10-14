@@ -1,5 +1,5 @@
 **App Permissions**
-  Network Status
+  \nNetwork Status
   WiFi Status
   Bluetooth
   Foreground Service
