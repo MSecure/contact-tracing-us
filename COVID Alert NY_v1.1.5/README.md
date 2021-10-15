@@ -1,8 +1,8 @@
-Summary:
+### Summary:
 
 This app uses the Exposure API developed by Apple and Google jointly. If you are within 6 feet of another person with the app for 10 minutes, your phone exchanges a secure Bluetooth token (code) with that person's. Then, if that person gets COVID, you get a notification that you were exposed- because you have their token. There is NO way for this app to see your location. There is NO tracking of your location through the app. It does NOT compromise bluetooth. This app can save lives.
 
-App Permissions:
+### App Permissions:
 
 From Android Manifest.xml:
 
@@ -48,7 +48,7 @@ Foreground services show a status bar notification, so that users are actively a
 Used by Firebase (a platform developed by Google for creating mobile and web applications) to recognize where the app was installed from.
 - No Location
 
-Privacy Policy:
+### Privacy Policy:
 
 COVID Alert NY protects your privacy and personal information. Downloading the app is voluntary, but the more New Yorkers that use this app, the more successful our efforts will be to stop the spread of COVID-19.
 
@@ -65,3 +65,6 @@ The representative will ask you if you're willing to share your app's list of cl
 Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert.
 
 https://coronavirus.health.ny.gov/covidalert-privacy/
+
+### Ghera Vulnerabilities
+The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information.
