@@ -7,6 +7,8 @@
   - Internet
   - Start at Boot
   - Vibrate
+
+The app can read/write to external storage without requesting the permissions
  
 ### Privacy Policy
 COVID Alert PA protects your privacy and personal information. Downloading the app is voluntary, but the more Pennsylvanians that use this app, the more successful our efforts will be to stop the spread of COVID-19.
@@ -14,3 +16,8 @@ COVID Alert PA protects your privacy and personal information. Downloading the a
   - The app does not use GPS, location services, or any movement or geographical information.
   - The app will never collect, transmit, or store your personal information and is completely anonymous.
 https://www.health.pa.gov/topics/disease/coronavirus/Pages/COVIDAlert.aspx#privacy
+
+### Privacy Violations
+The app says it never collects, transmits, or stores personal information, but after running the analysis we see that the app is logging sensitive information which goes against its privacy policy.
+The app also discloses the IP address which is also considered personal information
+
