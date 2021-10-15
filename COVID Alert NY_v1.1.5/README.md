@@ -48,14 +48,20 @@ Foreground services show a status bar notification, so that users are actively a
 Used by Firebase (a platform developed by Google for creating mobile and web applications) to recognize where the app was installed from.
 - No Location
 
-"As you go about your day, the app uses Bluetooth to sense when you spend more than 10 minutes within 6 feet of another person with the app."
+Privacy Policy:
 
-"We don't collect info that can identify you. The app never tracks your location."
+COVID Alert NY protects your privacy and personal information. Downloading the app is voluntary, but the more New Yorkers that use this app, the more successful our efforts will be to stop the spread of COVID-19.
 
-"When your app senses the close contact, your phone exchanges a secure rnadom code with the other person's phone. Your phone stores this cose contact code in a list.
-The app doesn't collect or share any names, locations, or phone numbers."
+As you go about your day, the app uses Bluetooth to sense when you spend more than 10 minutes within 6 feet of another person with the app.
 
-"If you test positive for COVID-19, a public health representative will call you as soon as possible.
-The representative will ask you if you're willing to share your app's list of close contact codes to help protect other people. Sharing your list is secure and private. The app never reveals who you are to anyone."
+We don't collect info that can identify you. The app never tracks your location.
 
-"Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert."
+When your app senses the close contact, your phone exchanges a secure rnadom code with the other person's phone. Your phone stores this cose contact code in a list.
+The app doesn't collect or share any names, locations, or phone numbers.
+
+If you test positive for COVID-19, a public health representative will call you as soon as possible.
+The representative will ask you if you're willing to share your app's list of close contact codes to help protect other people. Sharing your list is secure and private. The app never reveals who you are to anyone.
+
+Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert.
+
+https://coronavirus.health.ny.gov/covidalert-privacy/
