@@ -21,3 +21,5 @@ https://www.health.pa.gov/topics/disease/coronavirus/Pages/COVIDAlert.aspx#priva
 The app says it never collects, transmits, or stores personal information, but after running the analysis we see that the app is logging sensitive information which goes against its privacy policy.
 The app also discloses the IP address which is also considered personal information
 
+### Ghera Vulnerabilities
+The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
