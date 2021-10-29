@@ -27,5 +27,5 @@ The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitb
 ### Deeper Analysis
 - At first glance it seems that the IP Address is being disclosed however the app is just using a format similar to the ip addresses x.x.x.x format. We can see that it is not actually IP addresses because the constants that are used in the code come in various forms some being in the x.x.x.x.x.x.x.x.x format which is clearly not an ip address
 - Next is the rawQuery SQL vulnerability however while the function is vulnerable the program doesnt allow for opportunities for injection.
-- The big vulnerability in the app is that it uses the SHA-1 hash function which is known to be very vulnerable. this 
+- The big vulnerability in the app is that it uses the SHA-1 hash function which is known to be very vulnerable. this should instead be replaced with a SHA-256 hash which is a lot more secure.
 - Another big vulnerability is that the app is accessing websites using an HTTP connection this is outdated and HTTPS should be used since HTTP connections are vulnerable to attack.
