@@ -1,15 +1,15 @@
-# Instuction from slack
+<!-- # Instuction from slack
 When you analyze an app, don't have to write the report straightaway. Note the following:
 1. What permissions are being used
 2. What features of the device the app is using (e.g., storage, Bluetooth, location, etc.)
 3. What is the app's privacy policy.
 4. Is the app violating its own privacy policy. How?
 
-For each app, keep a note of these points. At the end of the semester you should compile them in a report. 
+For each app, keep a note of these points. At the end of the semester you should compile them in a report.  -->
 
 # Covid Alert MI Analysis (Minqi) 
 ### APK Basic Info
-Name: MI COVID Alert_1.4_apkcombo.com.apk (You can find this apk file and its obfucated source code in this folder). The original report, ```MI_MobSF_report.pdf```, is also inside this folder. 
+App: MI COVID Alert_1.4_apkcombo.com.apk (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```MI_MobSF_report.pdf```, is also inside this folder. 
 
 ### App Permissions Declared
   - view network status (android.permission.ACCESS_NETWORK_STATE)
@@ -21,10 +21,10 @@ Name: MI COVID Alert_1.4_apkcombo.com.apk (You can find this apk file and its ob
 
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
+   - False Positive. The permission is mained by the Google API used.
    - Detail: (gov.michigan.MiCovidExposure.nearby.ExposureNotificationBroadcastReceiver) is Protected by a permission, but the protection level of the permission should be checked.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
-   - False Positive. Not used anywhere, possibly legacy code
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
