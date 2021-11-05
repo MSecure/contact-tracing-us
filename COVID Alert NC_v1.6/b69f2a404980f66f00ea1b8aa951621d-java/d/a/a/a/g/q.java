@@ -1,0 +1,22 @@
+package d.a.a.a.g;
+
+import c.b.b.e.a.i;
+import c.b.b.e.a.u;
+import gov.nc.dhhs.exposurenotification.network.DiagnosisKeyUploader;
+import java.util.List;
+
+/* compiled from: lambda */
+public final /* synthetic */ class q implements i {
+
+    /* renamed from: a  reason: collision with root package name */
+    public final /* synthetic */ DiagnosisKeyUploader f4691a;
+
+    public /* synthetic */ q(DiagnosisKeyUploader diagnosisKeyUploader) {
+        this.f4691a = diagnosisKeyUploader;
+    }
+
+    @Override // c.b.b.e.a.i
+    public final u a(Object obj) {
+        return this.f4691a.submitToServers((List) obj);
+    }
+}

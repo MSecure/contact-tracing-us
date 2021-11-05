@@ -22,9 +22,9 @@ App: MI COVID Alert_1.4_apkcombo.com.apk (You can find this apk file and its obf
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
    - False Positive. The permission is mained by the Google API used.
-   - Detail: (gov.michigan.MiCovidExposure.nearby.ExposureNotificationBroadcastReceiver) is Protected by a permission, but the protection level of the permission should be checked.
+   <!-- - Detail: (gov.michigan.MiCovidExposure.nearby.ExposureNotificationBroadcastReceiver) is Protected by a permission, but the protection level of the permission should be checked.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
-   [android:exported=true]
+   [android:exported=true] -->
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
