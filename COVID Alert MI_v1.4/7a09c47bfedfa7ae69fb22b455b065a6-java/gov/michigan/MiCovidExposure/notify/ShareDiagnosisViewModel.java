@@ -1,0 +1,258 @@
+package gov.michigan.MiCovidExposure.notify;
+
+import android.app.Application;
+import android.app.ProgressDialog;
+import androidx.lifecycle.LiveData;
+import b.o.a;
+import b.o.n;
+import b.o.p;
+import b.o.w;
+import b.x.t;
+import c.b.a.a.d.k.b;
+import c.b.b.b.c;
+import c.b.b.e.a.l;
+import c.b.b.e.a.q;
+import c.b.b.e.a.u;
+import com.google.android.gms.nearby.exposurenotification.TemporaryExposureKey;
+import e.a.a.f.o0;
+import e.a.a.f.p0;
+import e.a.a.f.q0;
+import g.b.a.d;
+import g.b.a.s;
+import gov.michigan.MiCovidExposure.R;
+import gov.michigan.MiCovidExposure.common.AppExecutors;
+import gov.michigan.MiCovidExposure.common.SingleLiveEvent;
+import gov.michigan.MiCovidExposure.common.TaskToFutureAdapter;
+import gov.michigan.MiCovidExposure.nearby.ExposureNotificationClientWrapper;
+import gov.michigan.MiCovidExposure.nearby.ProvideDiagnosisKeysWorker;
+import gov.michigan.MiCovidExposure.network.DiagnosisKey;
+import gov.michigan.MiCovidExposure.network.DiagnosisKeys;
+import gov.michigan.MiCovidExposure.storage.PositiveDiagnosisEntity;
+import gov.michigan.MiCovidExposure.storage.PositiveDiagnosisRepository;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class ShareDiagnosisViewModel extends a {
+    public static final long NO_EXISTING_ID = -1;
+    public static final String TAG = "ShareDiagnosisViewModel";
+    public static String error_token_flag = "OK";
+    public final SingleLiveEvent<Void> deletedLiveEvent = new SingleLiveEvent<>();
+    public final p<Long> existingIdLiveData = new p<>(-1L);
+    public final p<Boolean> inFlightResolutionLiveData = new p<>(Boolean.FALSE);
+    public final PositiveDiagnosisRepository repository;
+    public final SingleLiveEvent<b> resolutionRequiredLiveEvent = new SingleLiveEvent<>();
+    public final SingleLiveEvent<Boolean> savedLiveEvent = new SingleLiveEvent<>();
+    public final SingleLiveEvent<Boolean> sharedLiveEvent = new SingleLiveEvent<>();
+    public final SingleLiveEvent<String> snackbarLiveEvent = new SingleLiveEvent<>();
+    public final p<String> testIdentifierLiveData = new p<>();
+    public final p<s> testTimestampLiveData = new p<>();
+
+    public ShareDiagnosisViewModel(Application application) {
+        super(application);
+        this.repository = new PositiveDiagnosisRepository(application);
+    }
+
+    private u<List<TemporaryExposureKey>> getRecentKeys() {
+        return TaskToFutureAdapter.getFutureWithTimeout(ExposureNotificationClientWrapper.get(getApplication()).getTemporaryExposureKeyHistory(), ProvideDiagnosisKeysWorker.DEFAULT_API_TIMEOUT.s(), TimeUnit.MILLISECONDS, AppExecutors.getScheduledExecutor());
+    }
+
+    private u<Void> insertOrUpdateDiagnosis(boolean z) {
+        long longValue = this.existingIdLiveData.getValue().longValue();
+        if (longValue != -1) {
+            return this.repository.markSharedForIdAsync(longValue, z);
+        }
+        if (!z) {
+            return this.repository.deleteByIdAsync(longValue);
+        }
+        if (this.testTimestampLiveData.getValue() != null) {
+            return this.repository.upsertAsync(PositiveDiagnosisEntity.create(this.testTimestampLiveData.getValue(), z));
+        }
+        return this.repository.upsertAsync(PositiveDiagnosisEntity.create(s.Z(d.F(System.currentTimeMillis()), g.b.a.p.G()), z));
+    }
+
+    /* access modifiers changed from: private */
+    public u<Boolean> submitKeysToService(List<TemporaryExposureKey> list) {
+        t.y(4, "initialCapacity");
+        Object[] objArr = new Object[4];
+        int i = 0;
+        boolean z = false;
+        for (TemporaryExposureKey temporaryExposureKey : list) {
+            DiagnosisKey build = DiagnosisKey.newBuilder().setKeyBytes(temporaryExposureKey.getKeyData()).setIntervalNumber(temporaryExposureKey.getRollingStartIntervalNumber()).build();
+            if (build != null) {
+                int i2 = i + 1;
+                if (objArr.length < i2) {
+                    int length = objArr.length;
+                    if (i2 >= 0) {
+                        int i3 = length + (length >> 1) + 1;
+                        if (i3 < i2) {
+                            i3 = Integer.highestOneBit(i2 - 1) << 1;
+                        }
+                        if (i3 < 0) {
+                            i3 = Integer.MAX_VALUE;
+                        }
+                        objArr = Arrays.copyOf(objArr, i3);
+                    } else {
+                        throw new AssertionError("cannot store more than MAX_VALUE elements");
+                    }
+                } else if (z) {
+                    objArr = (Object[]) objArr.clone();
+                } else {
+                    objArr[i] = build;
+                    i++;
+                }
+                z = false;
+                objArr[i] = build;
+                i++;
+            } else {
+                throw null;
+            }
+        }
+        return l.s(new DiagnosisKeys(getApplication()).upload(c.l(objArr, i))).t(q0.f6361a, AppExecutors.getLightweightExecutor()).q(b.class, o0.f6357a, AppExecutors.getLightweightExecutor());
+    }
+
+    public void deleteEntity(PositiveDiagnosisEntity positiveDiagnosisEntity) {
+        u<Void> deleteByIdAsync = this.repository.deleteByIdAsync(positiveDiagnosisEntity.getId());
+        AnonymousClass1 r0 = new c.b.b.e.a.p<Void>() {
+            /* class gov.michigan.MiCovidExposure.notify.ShareDiagnosisViewModel.AnonymousClass1 */
+
+            @Override // c.b.b.e.a.p
+            public void onFailure(Throwable th) {
+            }
+
+            public void onSuccess(Void r1) {
+                ShareDiagnosisViewModel.this.deletedLiveEvent.postCall();
+            }
+        };
+        deleteByIdAsync.b(new q(deleteByIdAsync, r0), AppExecutors.getLightweightExecutor());
+    }
+
+    public LiveData<PositiveDiagnosisEntity> getByIdLiveData(long j) {
+        return this.repository.getByIdLiveData(j);
+    }
+
+    public SingleLiveEvent<Void> getDeletedSingleLiveEvent() {
+        return this.deletedLiveEvent;
+    }
+
+    public LiveData<Long> getExistingIdLiveData() {
+        return this.existingIdLiveData;
+    }
+
+    public LiveData<Boolean> getInFlightResolutionLiveData() {
+        return this.inFlightResolutionLiveData;
+    }
+
+    public SingleLiveEvent<b> getResolutionRequiredLiveEvent() {
+        return this.resolutionRequiredLiveEvent;
+    }
+
+    public SingleLiveEvent<Boolean> getSavedLiveEvent() {
+        return this.savedLiveEvent;
+    }
+
+    public SingleLiveEvent<Boolean> getSharedLiveEvent() {
+        return this.sharedLiveEvent;
+    }
+
+    public SingleLiveEvent<String> getSnackbarSingleLiveEvent() {
+        return this.snackbarLiveEvent;
+    }
+
+    public LiveData<String> getTestIdentifierLiveData() {
+        return this.testIdentifierLiveData;
+    }
+
+    public LiveData<s> getTestTimestampLiveData() {
+        p<s> pVar = this.testTimestampLiveData;
+        n nVar = new n();
+        w wVar = new w(nVar);
+        n.a<?> aVar = new n.a<>(pVar, wVar);
+        n.a<?> g2 = nVar.f2232a.g(pVar, aVar);
+        if (g2 == null || g2.f2234b == wVar) {
+            if (g2 == null && nVar.hasActiveObservers()) {
+                aVar.f2233a.observeForever(aVar);
+            }
+            return nVar;
+        }
+        throw new IllegalArgumentException("This source was already added with the different observer");
+    }
+
+    public void onTestTimestampChanged(s sVar) {
+        this.testTimestampLiveData.setValue(sVar);
+    }
+
+    public void save(final boolean z, final ProgressDialog progressDialog) {
+        u<Void> insertOrUpdateDiagnosis = insertOrUpdateDiagnosis(z);
+        AnonymousClass3 r1 = new c.b.b.e.a.p<Void>() {
+            /* class gov.michigan.MiCovidExposure.notify.ShareDiagnosisViewModel.AnonymousClass3 */
+
+            @Override // c.b.b.e.a.p
+            public void onFailure(Throwable th) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                ShareDiagnosisViewModel.this.snackbarLiveEvent.postValue(ShareDiagnosisViewModel.this.getApplication().getString(R.string.generic_error_message));
+            }
+
+            public void onSuccess(Void r2) {
+                ShareDiagnosisViewModel.this.savedLiveEvent.postValue(Boolean.valueOf(z));
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+        };
+        insertOrUpdateDiagnosis.b(new q(insertOrUpdateDiagnosis, r1), AppExecutors.getLightweightExecutor());
+    }
+
+    public void setExistingId(long j) {
+        this.existingIdLiveData.setValue(Long.valueOf(j));
+    }
+
+    public void setInflightResolution(boolean z) {
+        this.inFlightResolutionLiveData.setValue(Boolean.valueOf(z));
+    }
+
+    public void setTestIdentifier(String str) {
+        this.testIdentifierLiveData.setValue(str);
+    }
+
+    public void share(final ProgressDialog progressDialog) {
+        progressDialog.show();
+        l u = l.s(getRecentKeys()).u(new p0(this), AppExecutors.getBackgroundExecutor());
+        AnonymousClass2 r1 = new c.b.b.e.a.p<Boolean>() {
+            /* class gov.michigan.MiCovidExposure.notify.ShareDiagnosisViewModel.AnonymousClass2 */
+
+            @Override // c.b.b.e.a.p
+            public void onFailure(Throwable th) {
+                SingleLiveEvent singleLiveEvent;
+                Object string;
+                if (!"OK".equalsIgnoreCase(ShareDiagnosisViewModel.error_token_flag)) {
+                    singleLiveEvent = ShareDiagnosisViewModel.this.sharedLiveEvent;
+                    string = Boolean.FALSE;
+                } else if (!(th instanceof b)) {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                    singleLiveEvent = ShareDiagnosisViewModel.this.snackbarLiveEvent;
+                    string = ShareDiagnosisViewModel.this.getApplication().getString(R.string.generic_error_message);
+                } else {
+                    b bVar = (b) th;
+                    if (bVar.f2941b.f5981c == 6) {
+                        ShareDiagnosisViewModel.this.resolutionRequiredLiveEvent.postValue(bVar);
+                        return;
+                    } else {
+                        ShareDiagnosisViewModel.this.snackbarLiveEvent.postValue(ShareDiagnosisViewModel.this.getApplication().getString(R.string.generic_error_message));
+                        return;
+                    }
+                }
+                singleLiveEvent.postValue(string);
+            }
+
+            public void onSuccess(Boolean bool) {
+                ShareDiagnosisViewModel.this.sharedLiveEvent.postValue(bool);
+            }
+        };
+        u.b(new q(u, r1), AppExecutors.getLightweightExecutor());
+    }
+}
