@@ -1,0 +1,19 @@
+APK is signed
+v1 signature: True
+v2 signature: True
+v3 signature: False
+Found 1 unique certificates
+Subject: O=HDOH
+Signature Algorithm: rsassa_pkcs1v15
+Valid From: 2020-08-18 04:09:46+00:00
+Valid To: 2045-08-12 04:09:46+00:00
+Issuer: O=HDOH
+Serial Number: 0x59c4f214
+Hash Algorithm: sha256
+md5: 6ca31e1a0de8df09f58e90b084fa9366
+sha1: 5563505580be789586eb31556dde08c1d457f670
+sha256: 650b1f73a6b027bf2a51156f71bd6841dce2177709c442e3a0bb66d044f419f8
+sha512: 851d4b9807b88e407c4ef8d1cb49479fad48028fb3d2e9f59833f7efb32c0d45111386dce2c6a0d9d4832dab6a226511280e7e86a0d786324c606e02c70c670f
+PublicKey Algorithm: rsa
+Bit Size: 2048
+Fingerprint: 6fe88c8540d74668eedf1c70d0bfa8fab4de044c5f3dcf2692e4d936cf924dc8
