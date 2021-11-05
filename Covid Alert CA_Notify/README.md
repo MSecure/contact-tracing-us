@@ -48,6 +48,14 @@ Ghera Violations:
 - This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f 
 directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)
 
+Manifest.xml Fixes:
+- The Broadcast receiver needs to specify permission in order to make sure that an application that specified the required permission can send intents to the broadcast receiver.
+
+Code Fixes:
+- Using a temp file to store data (e/t/k.java):- in this file the code base shows that it uses the line, File createTempFile = File.createTempFile("room-copy-helper", ".tmp", this.b.getCacheDir()), to create a temp file and store data to it. To fix this error, they should just use the method createNewFile that actually creates a new file rather than a temp file. 
+- Hardcodes sensitive informatino: Uses this line to hardcode sensitive information, StringBuilder j2 = f.a.a.a.a.j("Metadata key=", str4, ", value="). The problem is that sensitive information hardcoded like this should also be deleted out of the system, but it doesn't do that.
+- Uses RawSQLQuery:- in the method, Cursor rawQuery = this.a.rawQuery("SELECT target_id, target_proto FROM targets", null), for file f/b/c/k/t/a1.java, there is the method rawQuery which cause the likelyhood SQL query injection. Use a method like SQLiteStatement which better defends against SQL code injections and stil allows to query, insert, update, and delete. 
+
 
 
 

@@ -65,6 +65,3 @@ The representative will ask you if you're willing to share your app's list of cl
 Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert.
 
 https://coronavirus.health.ny.gov/covidalert-privacy/
-
-### Ghera Vulnerabilities
-The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information.
