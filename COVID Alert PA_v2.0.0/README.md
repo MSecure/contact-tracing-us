@@ -1,4 +1,4 @@
-# Covid Alert PA Analysis (Soroush)
+# Covid Alert PA Analysis
 ### App Permissions
   - Network Status
   - WiFi Status
