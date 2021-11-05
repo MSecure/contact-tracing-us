@@ -7,6 +7,7 @@
   - Internet
   - Start at Boot
   - Vibrate
+  - Wake Lock
 
 The app can read/write to external storage without requesting the permissions
  
