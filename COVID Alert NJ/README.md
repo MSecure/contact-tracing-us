@@ -28,19 +28,17 @@ Foreground services show a status bar notification, so that users are actively a
 
 ### Privacy Policy:
 
-COVID Alert NY protects your privacy and personal information. Downloading the app is voluntary, but the more New Yorkers that use this app, the more successful our efforts will be to stop the spread of COVID-19.
-
-As you go about your day, the app uses Bluetooth to sense when you spend more than 10 minutes within 6 feet of another person with the app.
-
-We don't collect info that can identify you. The app never tracks your location.
-
-When your app senses the close contact, your phone exchanges a secure rnadom code with the other person's phone. Your phone stores this cose contact code in a list.
-The app doesn't collect or share any names, locations, or phone numbers.
-
-If you test positive for COVID-19, a public health representative will call you as soon as possible.
-The representative will ask you if you're willing to share your app's list of close contact codes to help protect other people. Sharing your list is secure and private. The app never reveals who you are to anyone.
-
-Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert.
+COVID Alert NJ Exposure Notification System (EN System) consists of the COVID Alert NJ app (App) and the Exposure
+Notification Services (EN Services) in iphone iOS. The EN System is being made available by the New Jersey
+Department of Health (DOH). The EN system is designed to assist in alerting individuals that came in close proximity
+to someone who later is diagnosed with COVID-19, and to provide information about the virus and steps for
+controlling the spread of the virus.
+The use of this EN system is entirely voluntary and is available in the operating EN system of iOS users or as an App
+to download for free from the Apple App Store and the Google Play Store. The App runs on iPhones that support iOS
+13.5 and higher, and Android phones running Android 6.0 and higher. The EN system is not intended for use by
+persons under 18 years of age, as they are considered not to have reached the digital age of consent or agreement
+with the State of New Jersey. You will be asked to confirm that you are 18 years or older after you download the
+App.
 
 https://www.nj.gov/health/documents/DPP_COVIDALERTNJ.pdf
 
