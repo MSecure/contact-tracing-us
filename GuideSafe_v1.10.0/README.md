@@ -43,6 +43,8 @@ The app says it never collects, transmits, or stores personal information, but a
 ### Deeper Analysis
 - [False Positive] Next is the rawQuery SQL vulnerability which will allow for sql injection as a function is provided that directly takes an string as an argument and puts it in to the sql database using a rawQuery.
 - The big vulnerability in the app is that it uses the ECB mode encryption which is known to be very vulnerable. 
+- The main activity of the app is also not protected meaning it can be accessed and called by any other apps.
+- The app also uses the locationHelper and locationManager classes within the main activity which means any other app will be able to access the current location by calling the main activity of this app.
 - The app can also read/write to external storage which leaves it vulnerable to data injection and any data that is written to the external storage by the app can be read by any other app. The app is using the external storage to create a temp file and store it.
 - One suspicious part of the app is that it is accessing a server in Bogota, Colombia. This seems unnecessary since the exposure notification servers should be in the US. The 
 app is attempting to access https://www.encdn.prod.exposurenotification.health which gives the following error when attempting to be accessed. 
