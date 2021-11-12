@@ -31,11 +31,8 @@
 The app can read/write to external storage without requesting the permissions
 
 ### Privacy Policy
-COVID Alert PA protects your privacy and personal information. Downloading the app is voluntary, but the more Pennsylvanians that use this app, the more successful our efforts will be to stop the spread of COVID-19.
-  - The app detects if users are in close contact with another app user, using Bluetooth Low Energy (BLE) technology. It is the same technology that your phone uses to connect to wireless headphones or your car.
-  - The app does not use GPS, location services, or any movement or geographical information.
-  - The app will never collect, transmit, or store your personal information and is completely anonymous.
-https://www.health.pa.gov/topics/disease/coronavirus/Pages/COVIDAlert.aspx#privacy
+The GuideSafe™ Exposure Notification app was developed by the Alabama Department of Public Health in cooperation with the University of Alabama at Birmingham and MotionMobs, using technology from a collaboration between Apple and Google. Users of the app exchange anonymous codes among their phones using Bluetooth — no location data is ever stored or exchanged, and your personal information is never shared.
+https://www.guidesafe.org/privacy-statement/
 
 ### Privacy Violations
 The app says it never collects, transmits, or stores personal information, but after running the analysis we see that the has read/write permissions to the external storage which any app can access which allows for data injection and reading any data that the app writes to external storage.
@@ -44,8 +41,10 @@ The app says it never collects, transmits, or stores personal information, but a
 [False Positive] The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
 
 ### Deeper Analysis
-- [False Positive] At first glance it seems that the IP Address is being disclosed however the app is just using a format similar to the ip addresses x.x.x.x format. We can see that it is not actually IP addresses because the constants that are used in the code come in various forms some being in the x.x.x.x.x.x.x.x.x format which is clearly not an ip address
 - [False Positive] Next is the rawQuery SQL vulnerability which will allow for sql injection as a function is provided that directly takes an string as an argument and puts it in to the sql database using a rawQuery.
-- The big vulnerability in the app is that it uses the SHA-1 hash function which is known to be very vulnerable. this should instead be replaced with a SHA-256 hash which is a lot more secure.
-- Another big vulnerability is that the app is accessing websites using an HTTP connection this is outdated and HTTPS should be used since HTTP connections are vulnerable to attack.
-- The app can also read/write to external storage which leaves it vulnerable to data injection and any data that is written to the external storage by the app can be read by any other app
+- The big vulnerability in the app is that it uses the ECB mode encryption which is known to be very vulnerable. 
+- The app can also read/write to external storage which leaves it vulnerable to data injection and any data that is written to the external storage by the app can be read by any other app. The app is using the external storage to create a temp file and store it.
+- One suspicious part of the app is that it is accessing a server in Bogota, Colombia. This seems unnecessary since the exposure notification servers should be in the US. The 
+app is attempting to access https://www.encdn.prod.exposurenotification.health which gives the following error when attempting to be accessed. 
+
+```<h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>05LKOYQAAAAB6raS3jv9vRq4ROGa1WoQVRE5BRURHRTA0MTUARWRnZQ==```
