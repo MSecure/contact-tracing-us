@@ -1,5 +1,14 @@
 # Covid Alert PA Analysis
 ### App Permissions
+  - Network Status
+  - WiFi Status
+  - Bluetooth
+  - Foreground Service
+  - Internet
+  - Start at Boot
+  - Vibrate
+
+
 ```
 <uses-permission android:name="android.permission.BLUETOOTH" />
 
@@ -15,13 +24,6 @@
 
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 ```
-  - Network Status
-  - WiFi Status
-  - Bluetooth
-  - Foreground Service
-  - Internet
-  - Start at Boot
-  - Vibrate
 
 The app can read/write to external storage without requesting the permissions
 
