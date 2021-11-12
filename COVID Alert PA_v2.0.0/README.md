@@ -1,14 +1,18 @@
 # Covid Alert PA Analysis
 ### App Permissions
 ```
-<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
-<uses-feature android:name="android.hardware.bluetooth" />
 <uses-permission android:name="android.permission.BLUETOOTH" />
+
 <uses-permission android:name="android.permission.INTERNET" />
+
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
 <uses-permission android:name="android.permission.VIBRATE" />
+
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 ```
   - Network Status
