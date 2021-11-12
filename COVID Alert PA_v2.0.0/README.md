@@ -1,5 +1,16 @@
 # Covid Alert PA Analysis
 ### App Permissions
+```
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+<uses-feature android:name="android.hardware.bluetooth" />
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+```
   - Network Status
   - WiFi Status
   - Bluetooth
@@ -9,9 +20,6 @@
   - Vibrate
 
 The app can read/write to external storage without requesting the permissions
-
-### Android Manifest
-
 
 ### Privacy Policy
 COVID Alert PA protects your privacy and personal information. Downloading the app is voluntary, but the more Pennsylvanians that use this app, the more successful our efforts will be to stop the spread of COVID-19.
