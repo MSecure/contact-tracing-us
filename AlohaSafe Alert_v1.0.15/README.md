@@ -1,5 +1,22 @@
 # AlohaSafe Alert Analysis
 ### App Permissions
+```
+<uses-permission android:name="android.permission.INTERNET" />
+
+<uses-permission android:name="android.permission.VIBRATE" />
+
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+<uses-permission android:name="android.permission.BLUETOOTH" />
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+```
   - Network Status
   - WiFi Status
   - Bluetooth
@@ -12,6 +29,7 @@
 The app can read/write to external storage without requesting the permissions
  
 The app doesn't ask about any location permission but it uses the location helper and location manager classes
+
 ### Privacy Policy
 DOH never collects or processes any personally identifiable information from the AlohaSafe Alert app. Bluetooth random codes are assigned to each device using the AlohaSafe Alert app. Each user’s random code changes frequently to further protect their identity. When an AlohaSafe Alert user comes into close contact with another AlohaSafe Alert user, their random codes are exchanged using Bluetooth. Random codes for close contacts are stored in a user’s device for 14 days. No personally identifiable or location information is collected, stored, or exchanged..
   - https://health.hawaii.gov/coronavirusdisease2019/alohasafe-alert/
