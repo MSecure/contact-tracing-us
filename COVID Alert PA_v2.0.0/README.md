@@ -9,7 +9,10 @@
   - Vibrate
 
 The app can read/write to external storage without requesting the permissions
- 
+
+### Android Manifest
+
+
 ### Privacy Policy
 COVID Alert PA protects your privacy and personal information. Downloading the app is voluntary, but the more Pennsylvanians that use this app, the more successful our efforts will be to stop the spread of COVID-19.
   - The app detects if users are in close contact with another app user, using Bluetooth Low Energy (BLE) technology. It is the same technology that your phone uses to connect to wireless headphones or your car.
