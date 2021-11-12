@@ -47,7 +47,7 @@ The app says it never collects, transmits, or stores personal information, but a
 - The app also uses the locationHelper and locationManager classes within the main activity which means any other app will be able to access the current location by calling the main activity of this app.
 - The app can also read/write to external storage which leaves it vulnerable to data injection and any data that is written to the external storage by the app can be read by any other app. The app is using the external storage to create a temp file and store it.
 - One suspicious part of the app is that it is accessing a server in Bogota, Colombia. This seems unnecessary since the exposure notification servers should be in the US. The 
-app is attempting to access https://www.encdn.prod.exposurenotification.health which gives the following error when attempting to be accessed. 
+app is attempting to access encdn.prod.exposurenotification.health which gives the following error when attempting to be accessed. 
 
 ```
 <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>05LKOYQAAAAB6raS3jv9vRq4ROGa1WoQVRE5BRURHRTA0MTUARWRnZQ==
