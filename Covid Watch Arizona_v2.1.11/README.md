@@ -38,11 +38,13 @@ Once you opt-in and enable exposure notifications on your phone, Covid Watch sta
 ### Privacy Violations
 - The app says it never collects, transmits, or stores personal information, but the app is getting location information via the location manager class which is due to the use of Twilight Manager which takes the device's location to find out the sunset and sunrise times.
 - In ```m/b/a/a/i/d.java``` the app is accessing the SIM Provider Details which is personal information.
-- Additionally, the app accesses the DIAL and SEND intents which allows it to make phone calls and send messages. This removes the anonymity of the app. 
-- Also, the app  
+- Additionally, the app accesses the DIAL and SEND intents which allows it to make phone calls and send messages. This removes the anonymity of the app.  
+- [False Positive] The initial analysis shows the use of the Content Resolver but this is used to access GMS (Google Mobile Services) which the app is allowed to access without violating its privacy policy.
 
 ### Ghera Vulnerabilities
- - [False Positive] The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
+ - [False Positive] The app is not vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it doesn't use rawQuery() to get information. 
+- [False Positive] The app is not vulnerable to the insecure SSL implementation (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Networking/) since it is not using the getSocket() or getInsecure() methods
+
 ### Deeper Analysis
 - Next the app can read/write to external storage which means the app is vulnerable to data injection and if any data is written from the app to the external storage it can be read from any other app.
 - The app uses a MD5 hash function which is weak outdated function that should be updated.
