@@ -34,4 +34,4 @@ Ghera Vulnerabilities:
 should use SQLiteStatement or a SQL function which is more protected to SQL code
 injections
 - app creates temp file by using the method createNewTempFile() should not store info
-into this file should say createNewFile() method instead
+into this file should say createNewFile() method instead ~ [False Positive] deletes file after creation.
