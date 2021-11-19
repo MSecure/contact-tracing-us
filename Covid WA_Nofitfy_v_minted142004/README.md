@@ -26,8 +26,8 @@ App's Permissions:
 
 Privacy Violation
 - It says that it doesn't log private info, however according to the report
-it logs sensitive info [False Positive] ~ all info being logged is info 
-voluntarily given by the user itself
+it logs sensitive info 
+- Private information like username, password, and keys are hardcoded ~ [False Positive]  
 
 Ghera Vulnerabilities:
 - App uses SQLite RawQuery so it's vulnerable to code injection, but instead it 
