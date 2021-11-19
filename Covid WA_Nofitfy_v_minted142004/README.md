@@ -27,7 +27,7 @@ App's Permissions:
 Privacy Violation
 - It says that it doesn't log private info, however according to the report
 it logs sensitive info 
-- Private information like username, password, and keys are hardcoded ~ [False Positive]  
+- Private information like username, password, and keys are hardcoded ~ [False Positive] the file doesn't hardcode any keys, the line in which the error came is this one: StringBuilder j2 = f.a.a.a.a.j("Metadata key=", str4, ", value=");. str4 is a string object that decodes the bytes set from bArr2 using the charset from f.b.b.a.d.a in the line: String str4 = new String(bArr2, f.b.b.a.d.a);. Clearly the inputed value is not any constant from these two lines.  
 
 Ghera Vulnerabilities:
 - App uses SQLite RawQuery so it's vulnerable to code injection, but instead it 
