@@ -46,4 +46,5 @@ The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitb
 - Next the app can read/write to external storage which means the app is vulnerable to data injection and if any data is written from the app to the external storage it can be read from any other app.
 - The app also uses ECB encryption which is known to be a weak crypto encryption algorithm with a MD5 hash function which is another weak outdated function that should be updated.
 - [False Postive] Next is the rawQuery SQL vulnerability however while the function is vulnerable the program doesnt allow for opportunities for injection.
+- The app uses an insecure Random Number Generator. While this isn't too much of a vulnerability the app should be updated to use SecureRandom.
 
