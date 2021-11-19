@@ -38,7 +38,7 @@ used to identify any system user.
 
 Privacy Policy Violations:
 
-- ̶T̶h̶e̶ ̶P̶r̶i̶v̶a̶c̶y̶ ̶P̶o̶l̶i̶c̶y̶ ̶s̶a̶y̶s̶ ̶t̶h̶a̶t̶ ̶t̶h̶e̶ ̶a̶p̶p̶ ̶d̶o̶e̶s̶n̶'̶t̶ ̶s̶t̶o̶r̶e̶ ̶p̶r̶i̶v̶a̶t̶e̶ ̶i̶n̶f̶o̶r̶m̶a̶t̶i̶o̶n̶ ̶h̶o̶w̶e̶v̶e̶r̶ ̶a̶f̶t̶e̶r̶ ̶r̶u̶n̶n̶i̶n̶g̶ ̶t̶h̶e̶ ̶a̶n̶a̶l̶y̶s̶i̶s̶,̶ ̶i̶t̶ ̶s̶a̶y̶s̶ ̶t̶h̶e̶ ̶a̶p̶p̶ ̶i̶n̶s̶e̶r̶t̶s̶ ̶S̶e̶n̶s̶i̶t̶i̶v̶e̶ ̶I̶n̶f̶o̶r̶m̶a̶t̶i̶o̶n̶ ̶i̶n̶t̶o̶ ̶a̶ ̶L̶o̶g̶ ̶F̶i̶l̶e̶.̶ ̶(̶h̶t̶t̶p̶s̶:̶/̶/̶g̶i̶t̶h̶u̶b̶.̶c̶o̶m̶/̶M̶o̶b̶S̶F̶/̶o̶w̶a̶s̶p̶-̶m̶s̶t̶g̶/̶b̶l̶o̶b̶/̶m̶a̶s̶t̶e̶r̶/̶D̶o̶c̶u̶m̶e̶n̶t̶/̶0̶x̶0̶5̶d̶-̶T̶e̶s̶t̶i̶n̶g̶-̶D̶a̶t̶a̶-̶S̶t̶o̶r̶a̶g̶e̶.̶m̶d̶#̶l̶o̶g̶s̶)̶
+- [False Positive] T̶h̶e̶ ̶P̶r̶i̶v̶a̶c̶y̶ ̶P̶o̶l̶i̶c̶y̶ ̶s̶a̶y̶s̶ ̶t̶h̶a̶t̶ ̶t̶h̶e̶ ̶a̶p̶p̶ ̶d̶o̶e̶s̶n̶'̶t̶ ̶s̶t̶o̶r̶e̶ ̶p̶r̶i̶v̶a̶t̶e̶ ̶i̶n̶f̶o̶r̶m̶a̶t̶i̶o̶n̶ ̶h̶o̶w̶e̶v̶e̶r̶ ̶a̶f̶t̶e̶r̶ ̶r̶u̶n̶n̶i̶n̶g̶ ̶t̶h̶e̶ ̶a̶n̶a̶l̶y̶s̶i̶s̶,̶ ̶i̶t̶ ̶s̶a̶y̶s̶ ̶t̶h̶e̶ ̶a̶p̶p̶ ̶i̶n̶s̶e̶r̶t̶s̶ ̶S̶e̶n̶s̶i̶t̶i̶v̶e̶ ̶I̶n̶f̶o̶r̶m̶a̶t̶i̶o̶n̶ ̶i̶n̶t̶o̶ ̶a̶ ̶L̶o̶g̶ ̶F̶i̶l̶e̶.̶ ̶(̶h̶t̶t̶p̶s̶:̶/̶/̶g̶i̶t̶h̶u̶b̶.̶c̶o̶m̶/̶M̶o̶b̶S̶F̶/̶o̶w̶a̶s̶p̶-̶m̶s̶t̶g̶/̶b̶l̶o̶b̶/̶m̶a̶s̶t̶e̶r̶/̶D̶o̶c̶u̶m̶e̶n̶t̶/̶0̶x̶0̶5̶d̶-̶T̶e̶s̶t̶i̶n̶g̶-̶D̶a̶t̶a̶-̶S̶t̶o̶r̶a̶g̶e̶.̶m̶d̶#̶l̶o̶g̶s̶) 
 - To protect the keys it keeps changing the key values; however, they use insufficient 
 Random Values making the keys not so protected.(https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04g-Testing-Cryptography.md#weak-random-number-generators)
 - retains keys and other sensitive information into its files evnetough it supposed to 
