@@ -36,7 +36,10 @@ Once you opt-in and enable exposure notifications on your phone, Covid Watch sta
 - https://azdhs.gov/documents/privacy-policy/covid-watch-application-privacy-policy.pdf
 
 ### Privacy Violations
-The app says it never collects, transmits, or stores personal information, but the app is getting location information via the location manager class which is due to the use of Twilight Manager which takes the device's location to find out the sunset and sunrise times.
+- The app says it never collects, transmits, or stores personal information, but the app is getting location information via the location manager class which is due to the use of Twilight Manager which takes the device's location to find out the sunset and sunrise times.
+- In ```m/b/a/a/i/d.java``` the app is accessing the SIM Provider Details which is personal information.
+- Additionally, the app accesses the DIAL and SEND intents which allows it to make phone calls and send messages. This removes the anonymity of the app. 
+- Also, the app  
 
 ### Ghera Vulnerabilities
  - [False Positive] The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
@@ -46,6 +49,6 @@ The app says it never collects, transmits, or stores personal information, but t
 - The app uses a MD5 hash function which is weak outdated function that should be updated.
 - The app uses a SHA-1 hash which is weak and outdated and should be updated to SHA-256.
 - [False Postive] Next is the rawQuery SQL vulnerability however while the function is vulnerable the program doesnt allow for opportunities for injection.
-- [False Positive] Next is the Insecure Implementation of SSL while this seems vulnerable to MITM attacks the app uses SSL Certificate pinning to detect and prevent MITM attacks. It also doesn't use the getSocket() or getInsecure() methods which are known to be vulnerable to MITM attacks
+- [False Positive] Next is the Insecure Implementation of SSL while this seems vulnerable to MITM attacks the app uses SSL Certificate pinning to detect and prevent MITM attacks. It also doesn't use the getSocket() or getInsecure() methods which are known to be vulnerable to MITM attacks.
+- [False Positive] The app creates a temp file but it doesn't store sensitive info and deletes the file on exit.
 - The app uses an insecure Random Number Generator. While this isn't too much of a vulnerability the app should be updated to use SecureRandom.
-
