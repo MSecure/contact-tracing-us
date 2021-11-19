@@ -27,7 +27,12 @@ SHA256: e85ec2bf31c642bc0bfcefa384c34dd29cae1229b0279af0a44df9d3251bfa6d
 
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
-   - False Positive. The permission is mained by the Google API used.
+   ~~- False Positive. The permission is mained by the Google API used.~~ 
+   - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
+   [android:exported=true]
+   - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
+   - User Guide: https://developers.google.com/android/exposure-notifications/implementation-guide
+   - Glossary: https://developers.google.com/android/exposure-notifications/exposure-notifications-api#glossary
    <!-- - Detail: (gov.michigan.MiCovidExposure.nearby.ExposureNotificationBroadcastReceiver) is Protected by a permission, but the protection level of the permission should be checked.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true] -->

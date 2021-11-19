@@ -28,11 +28,13 @@ SHA256: 2bbe4e971a4d98b6e96ba82227b3964103135ae069b4a4cdf430e1d40543a2b2
   - Unknown permission(com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE) This permission is required by Firebase Analytics for the reporting of install referrer campaign information. It is a requirement from Play Install Referrer API
 
 ### MANIFEST ANALYSIS
- <!-- - Broadcast Receiver
-   ~~- False Positive. The permission is mained by the Google API used.~~ -->
-   <!-- - Detail: (gov.michigan.MiCovidExposure.nearby.ExposureNotificationBroadcastReceiver) is Protected by a permission, but the protection level of the permission should be checked.
+ - Broadcast Receiver
+   ~~- False Positive. The permission is mained by the Google API used.~~ 
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
-   [android:exported=true] -->
+   [android:exported=true]
+   - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
+   - User Guide: https://developers.google.com/android/exposure-notifications/implementation-guide
+   - Glossary: https://developers.google.com/android/exposure-notifications/exposure-notifications-api#glossary
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE [android:exported=true]
     - Permission: android.permission.DUMP [android:exported=true]
