@@ -52,3 +52,5 @@ app is attempting to access encdn.prod.exposurenotification.health which gives t
 ```
 <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>05LKOYQAAAAB6raS3jv9vRq4ROGa1WoQVRE5BRURHRTA0MTUARWRnZQ==
 ```
+
+- The app uses an insecure Random Number Generator. While this isn't too much of a vulnerability the app should be updated to use SecureRandom.
