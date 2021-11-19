@@ -46,3 +46,4 @@ The app says it never collects, transmits, or stores personal information, but a
 - The big vulnerability in the app is that it uses the SHA-1 hash function which is known to be very vulnerable. this should instead be replaced with a SHA-256 hash which is a lot more secure.
 - Another big vulnerability is that the app is accessing websites using an HTTP connection this is outdated and HTTPS should be used since HTTP connections are vulnerable to attack.
 - The app can also read/write to external storage which leaves it vulnerable to data injection and any data that is written to the external storage by the app can be read by any other app
+- The app uses an insecure Random Number Generator. While this isn't too much of a vulnerability the app should be updated to use SecureRandom.
