@@ -15,15 +15,18 @@ android.permission.WAKE_LOCK
 
 ### Manifest Analysis
 
-ShareDiagnosisActivity
+ShareDiagnosisActivity lacks a permission, leaving it accessible to any other application on the device.
 <activity android:name="com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity" android:exported="true" android:windowSoftInputMode="adjustResize|stateHidden" android:parentActivityName="com.google.android.apps.exposurenotification.home.ExposureNotificationActivity">
 
-A malicious intent can be passed due to the lack of android permission.
+ExposureNotificationDismissedReceiver lacks a permission, leaving it accessible to any other application on the device.
 
-ExposureNotificationBroadcastReceiver
-False Positive. The permission is mained by the Google API used.
-
-
+  <receiver android:name="com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.apps.exposurenotification.common.NotificationHelper.NOTIFICATION_DISMISSED_ACTION_ID" />
+            </intent-filter>
+        </receiver>
+     
+ A malicious intent can be passed due to the lack of system-level permission.
 ### Privacy Policy:
 
 COVID Alert CT allows users to send and receive notifications of a potential high-risk exposure to COVID-19, in a privacy-preserving manner. The notifications will include instructions on who to contact and next steps to take. 
@@ -43,13 +46,14 @@ The function above uses getLastKnownLocation("network") to access the location w
 Therefore, this is clearly a violation of the privacy policy made on the app official website.
 
 ### Server Locations
-No suspicious servers or suspicious location of servers find here.
+No suspicious servers or suspicious location of servers found here.
 
 ### URL
 http://ct.gov/covidalertct
 
 ### Code Analysis
-Application is signed with v1 signature scheme, making it vulnerable to Janus vulnerability on Android <7.0
-[False Positive] Files may contain hardcoded sensitive information like usernames, passwords, keys etc. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
-[False Positive]App uses SQLite Database and execute raw SQL query.
+- Application is signed with v1 signature scheme, making it vulnerable to Janus vulnerability on Android <7.0
+- [False Positive] Files may contain hardcoded sensitive information like usernames, passwords, keys etc. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
+- [False Positive] App uses SQLite Database and execute raw SQL query.
 In e/t/k.java, when there is a execSQL(), the functions only take in an int and SQLiteDatabase; since we can't do any SQL injection with an int as input, this rawSQL seems to be safe.
+  
