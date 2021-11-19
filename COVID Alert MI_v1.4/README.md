@@ -11,6 +11,12 @@ For each app, keep a note of these points. At the end of the semester you should
 ### APK Basic Info
 App: MI COVID Alert_1.4_apkcombo.com.apk (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```MI_MobSF_report.pdf```, is also inside this folder. 
 
+```
+MD5: 7a09c47bfedfa7ae69fb22b455b065a6
+SHA1: 2090ade76f5b2c68d34cb6d42650c24c71ad3814
+SHA256: e85ec2bf31c642bc0bfcefa384c34dd29cae1229b0279af0a44df9d3251bfa6d
+```
+
 ### App Permissions Declared
   - view network status (android.permission.ACCESS_NETWORK_STATE)
   - create Bluetooth connections (android.permission.BLUETOOTH)

@@ -12,6 +12,12 @@ For each app, keep a note of these points. At the end of the semester you should
 App Name: SlowCOVIDNC
 Apk Name: SlowCOVIDNC_1.6_apkcombo.com.apk (You can find this apk file and its obfucated source code in this folder). More detailed info can be found in the report from MobSF, ```MI_MobSF_report.pdf```, which is also inside this folder. 
 
+```
+MD5: b69f2a404980f66f00ea1b8aa951621d
+SHA1: 1d47a8aee251ee5521fce2e31e4464544690d7fc
+SHA256: 683b42f6e5a708c48e1b708e81549511d2803654e82a92301f3b7072d7fbfd40
+```
+
 ### App Permissions Declared
   - view network status (android.permission.ACCESS_NETWORK_STATE)
   - create Bluetooth connections (android.permission.BLUETOOTH)
@@ -55,11 +61,8 @@ Therefore, this is clearly a violation of the privacy policy made on the app off
 - Application is signed with v1 signature scheme, making it vulnerable to Janus vulnerability on Android <7.0
 <!-- - The App logs information. Sensitive information should never be logged. -->
 - The App uses an insecure Random Number Generator, java.util.Random in e/b/f/b.java
-- IP Address disclosure. gov/nc/dhhs/exposurenotification/nearby/ProvideDiagnosisKeysWorker.java
-- AES/ECB mode used for encryption in files:
-```
-c/b/c/a/m0/a.java
-```
+- AES/ECB mode used for encryption in `c/b/c/a/m0/a.java`
+- [*False Positive*] ~~IP Address disclosure.~~ This is just checking the version of a browser. gov/nc/dhhs/exposurenotification/nearby/ProvideDiagnosisKeysWorker.java
 - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
 - [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
   - In `b/r/f.java`, when there is a `execSQL()`, the functions only take in an int and SQLiteDatabase; since we can't do any SQL injection with an int as input, this rawSQL seems to be safe. 

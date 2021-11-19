@@ -1,0 +1,22 @@
+package com.google.android.gms.internal.nearby;
+
+import android.content.Context;
+import android.os.Looper;
+import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.internal.ClientSettings;
+import com.google.android.gms.nearby.connection.ConnectionsOptions;
+
+/* access modifiers changed from: package-private */
+/* compiled from: com.google.android.gms:play-services-nearby@@18.0.3-eap */
+public final class zzft extends Api.AbstractClientBuilder<zzdd, ConnectionsOptions> {
+    zzft() {
+    }
+
+    /* Return type fixed from 'com.google.android.gms.common.api.Api$Client' to match base method */
+    /* JADX DEBUG: Method arguments types fixed to match base method, original types: [android.content.Context, android.os.Looper, com.google.android.gms.common.internal.ClientSettings, java.lang.Object, com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks, com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener] */
+    @Override // com.google.android.gms.common.api.Api.AbstractClientBuilder
+    public final /* synthetic */ zzdd buildClient(Context context, Looper looper, ClientSettings clientSettings, ConnectionsOptions connectionsOptions, GoogleApiClient.ConnectionCallbacks connectionCallbacks, GoogleApiClient.OnConnectionFailedListener onConnectionFailedListener) {
+        return new zzdd(context, looper, clientSettings, connectionsOptions, connectionCallbacks, onConnectionFailedListener);
+    }
+}
