@@ -43,7 +43,6 @@ Once you opt-in and enable exposure notifications on your phone, Covid Watch sta
 
 ### Ghera Vulnerabilities
  - [False Positive] The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
- - 
 ### Deeper Analysis
 - Next the app can read/write to external storage which means the app is vulnerable to data injection and if any data is written from the app to the external storage it can be read from any other app.
 - The app uses a MD5 hash function which is weak outdated function that should be updated.
