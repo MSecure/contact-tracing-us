@@ -9,7 +9,7 @@ For each app, keep a note of these points. At the end of the semester you should
 
 # Covid Alert CO Analysis (Minqi) 
 ### APK Basic Info
-App: `CO Exposure Notifications_minted1000003_apkcombo.com.apk` (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```CO_MobSF_report.pdf```, is also inside this folder. 
+App: `CO Exposure Notifications_vminted1000003_apkpure.com.xapk` (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```CO_MobSF_report.pdf```, is also inside this folder. 
 
 ```
 APK Signature:
@@ -85,6 +85,6 @@ Method `c()` is found to have a high degree of resemblance to method `getLastKno
 No suspicious servers or suspicious location of servers find here.
 
 ### URL
-Lots of http URLs found in the app. Most of them are android/google sites or other open source websites. This might leak some info when requesting, but it won't cause any later leaking in a normal setting, because the servers forces HTTPS on server's end after manually testing.
+Lots of http URLs found in the app. Most of them are android/google sites or other open source websites. This might leak some info when requesting, but it won't cause any later leaking in a normal setting, because the servers forces HTTPS on server's end after manually testing. For a full list of the HTTP URLs, please check the URL section `CO_MobSF_report.pdf`.
 
 However, since the app allows the use of HTTP, it is vulnerable to Man-In-The-Middle attack. The attacker can talk to the app using HTTP but using HTTPS with the server. There might be potential info leaks made here.

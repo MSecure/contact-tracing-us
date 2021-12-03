@@ -12,6 +12,7 @@ For each app, keep a note of these points. At the end of the semester you should
 App: Care19 Alert_1.2_apkcombo.com.apk (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```ND&WY_MobSF_report.pdf```, is also inside this folder. 
 
 ```
+APK Signature:
 MD5: cd23393dda79fd4987d6fe5bc8505611
 SHA1: 140de96c739c41e7db117ea5dc628b4ec5f67a23
 SHA256: 2bbe4e971a4d98b6e96ba82227b3964103135ae069b4a4cdf430e1d40543a2b2
