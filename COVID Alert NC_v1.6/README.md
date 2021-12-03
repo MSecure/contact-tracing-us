@@ -28,7 +28,7 @@ SHA256: 683b42f6e5a708c48e1b708e81549511d2803654e82a92301f3b7072d7fbfd40
 
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
-   ~~- False Positive. The permission is mained by the Google API used.~~ 
+   - False Positive. The permission is mained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
@@ -40,7 +40,7 @@ SHA256: 683b42f6e5a708c48e1b708e81549511d2803654e82a92301f3b7072d7fbfd40
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
-    - These two are possibly false positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+    - False positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
 
 <!-- ###
 Sidenotes: It looks like BIND_JOB_SERVICE and DUMP are requested without declared in the Manifest
@@ -61,6 +61,8 @@ The app says no location info collected, but it has the function to find the loc
 - In function above, it also uses `getLastKnownLocation("network")` to access the location where the user connects to the Internet last time.
 
 Therefore, this is clearly a violation of the privacy policy made on the app official website.
+
+[*Following-up*] Later I found that this is similiar to the case in CO, that this funtion is implementing an isNight() function from TwilightManager. Please check the `Privacy Violations` secton in README from `Covid Alert Co` folder for more details.
 
 ### CODE ANALYSIS
 - Application is signed with v1 signature scheme, making it vulnerable to Janus vulnerability on Android <7.0
