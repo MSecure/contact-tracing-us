@@ -1,0 +1,149 @@
+package l.b.a.u;
+
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import l.b.a.f;
+import l.b.a.q;
+import l.b.a.x.a;
+import l.b.a.x.e;
+
+public final class o extends h implements Serializable {
+
+    /* renamed from: d  reason: collision with root package name */
+    public static final Locale f4345d = new Locale("ja", "JP", "JP");
+
+    /* renamed from: e  reason: collision with root package name */
+    public static final o f4346e = new o();
+
+    /* renamed from: f  reason: collision with root package name */
+    public static final Map<String, String[]> f4347f;
+
+    /* renamed from: g  reason: collision with root package name */
+    public static final Map<String, String[]> f4348g;
+
+    /* renamed from: h  reason: collision with root package name */
+    public static final Map<String, String[]> f4349h;
+
+    static {
+        HashMap hashMap = new HashMap();
+        f4347f = hashMap;
+        HashMap hashMap2 = new HashMap();
+        f4348g = hashMap2;
+        HashMap hashMap3 = new HashMap();
+        f4349h = hashMap3;
+        hashMap.put("en", new String[]{"Unknown", "K", "M", "T", "S", "H"});
+        hashMap.put("ja", new String[]{"Unknown", "K", "M", "T", "S", "H"});
+        hashMap2.put("en", new String[]{"Unknown", "K", "M", "T", "S", "H"});
+        hashMap2.put("ja", new String[]{"Unknown", "慶", "明", "大", "昭", "平"});
+        hashMap3.put("en", new String[]{"Unknown", "Keio", "Meiji", "Taisho", "Showa", "Heisei"});
+        hashMap3.put("ja", new String[]{"Unknown", "慶応", "明治", "大正", "昭和", "平成"});
+    }
+
+    private Object readResolve() {
+        return f4346e;
+    }
+
+    @Override // l.b.a.u.h
+    public b b(int i2, int i3, int i4) {
+        return new p(f.P(i2, i3, i4));
+    }
+
+    @Override // l.b.a.u.h
+    public b c(e eVar) {
+        return eVar instanceof p ? (p) eVar : new p(f.E(eVar));
+    }
+
+    @Override // l.b.a.u.h
+    public i i(int i2) {
+        return q.s(i2);
+    }
+
+    @Override // l.b.a.u.h
+    public String m() {
+        return "japanese";
+    }
+
+    @Override // l.b.a.u.h
+    public String n() {
+        return "Japanese";
+    }
+
+    /* JADX DEBUG: Type inference failed for r1v1. Raw type applied. Possible types: l.b.a.u.c<?>, l.b.a.u.c<l.b.a.u.p> */
+    @Override // l.b.a.u.h
+    public c<p> o(e eVar) {
+        return super.o(eVar);
+    }
+
+    @Override // l.b.a.u.h
+    public f<p> s(l.b.a.e eVar, q qVar) {
+        return g.F(this, eVar, qVar);
+    }
+
+    /* JADX DEBUG: Type inference failed for r1v1. Raw type applied. Possible types: l.b.a.u.f<?>, l.b.a.u.f<l.b.a.u.p> */
+    @Override // l.b.a.u.h
+    public f<p> t(e eVar) {
+        return super.t(eVar);
+    }
+
+    public l.b.a.x.o u(a aVar) {
+        int ordinal = aVar.ordinal();
+        if (!(ordinal == 15 || ordinal == 18 || ordinal == 20 || ordinal == 24)) {
+            switch (ordinal) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    break;
+                default:
+                    Calendar instance = Calendar.getInstance(f4345d);
+                    int ordinal2 = aVar.ordinal();
+                    int i2 = 0;
+                    if (ordinal2 == 19) {
+                        q[] t = q.t();
+                        int i3 = 366;
+                        while (i2 < t.length) {
+                            i3 = Math.min(i3, ((t[i2].c.K() ? 366 : 365) - t[i2].c.H()) + 1);
+                            i2++;
+                        }
+                        return l.b.a.x.o.e(1, (long) i3, 366);
+                    } else if (ordinal2 == 23) {
+                        return l.b.a.x.o.f((long) (instance.getMinimum(2) + 1), (long) (instance.getGreatestMinimum(2) + 1), (long) (instance.getLeastMaximum(2) + 1), (long) (instance.getMaximum(2) + 1));
+                    } else {
+                        switch (ordinal2) {
+                            case 25:
+                                q[] t2 = q.t();
+                                int i4 = (t2[t2.length - 1].q().b - t2[t2.length - 1].c.b) + 1;
+                                int i5 = Integer.MAX_VALUE;
+                                while (i2 < t2.length) {
+                                    i5 = Math.min(i5, (t2[i2].q().b - t2[i2].c.b) + 1);
+                                    i2++;
+                                }
+                                return l.b.a.x.o.f(1, 6, (long) i5, (long) i4);
+                            case 26:
+                                q[] t3 = q.t();
+                                return l.b.a.x.o.d((long) p.f4350e.b, (long) t3[t3.length - 1].q().b);
+                            case 27:
+                                q[] t4 = q.t();
+                                return l.b.a.x.o.d((long) t4[0].b, (long) t4[t4.length - 1].b);
+                            default:
+                                throw new UnsupportedOperationException("Unimplementable field: " + aVar);
+                        }
+                    }
+            }
+        }
+        return aVar.f4441e;
+    }
+}
