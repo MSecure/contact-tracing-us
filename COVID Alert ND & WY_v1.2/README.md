@@ -30,7 +30,7 @@ SHA256: 2bbe4e971a4d98b6e96ba82227b3964103135ae069b4a4cdf430e1d40543a2b2
 
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
-   ~~- False Positive. The permission is mained by the Google API used.~~ 
+   - False Positive. The permission is mained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
@@ -39,7 +39,7 @@ SHA256: 2bbe4e971a4d98b6e96ba82227b3964103135ae069b4a4cdf430e1d40543a2b2
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE [android:exported=true]
     - Permission: android.permission.DUMP [android:exported=true]
-    - Possibly false positive bacause the above permissions are only used by Android System; and we assume that the system is not malicious.
+    - False positive bacause the above permissions are only used by Android System; and we assume that the system is not malicious.
 
 <!-- ###
 Sidenotes: It looks like BIND_JOB_SERVICE and DUMP are requested without declared in the Manifest
