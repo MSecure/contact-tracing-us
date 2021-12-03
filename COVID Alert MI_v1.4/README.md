@@ -61,6 +61,8 @@ The app says no location info collected, but it has the function to find the loc
 
 Therefore, this is clearly a violation of the privacy policy made on the app official website.
 
+[*Following-up*] Later I found that this is similiar to the case in CO, that this funtion is implementing an isNight() function from TwilightManager. Please check the `Privacy Violations` secton in README from `Covid Alert Co` folder for more details.
+
 ### CODE ANALYSIS
 - Application is signed with v1 signature scheme, making it vulnerable to Janus vulnerability on Android <7.0
 <!-- - The App logs information. Sensitive information should never be logged. -->
