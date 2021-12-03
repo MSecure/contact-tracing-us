@@ -12,6 +12,7 @@ For each app, keep a note of these points. At the end of the semester you should
 App: `CO Exposure Notifications_minted1000003_apkcombo.com.apk` (You can find this apk file and its obfucated source code in this folder). The report from MobSF, ```CO_MobSF_report.pdf```, is also inside this folder. 
 
 ```
+APK Signature:
 MD5: 05fe369de5ff42442f6e1036d48d114d
 SHA1: f727762c5a53d2566ed84116df1a5b474ff954d8
 SHA256: ba31125e4944b02b3eaec267e5bc890940f0d91c03e1a098fa0f83b57e436fd5
@@ -48,12 +49,14 @@ https://cdphe.colorado.gov/exposure-notifications-privacy-policy
 ### Privacy Violations
 The app says no location info collected, but it has the function to find the location of nearby testing site. And the app uses GPS location API in `e/b/a/m.java`.
 - This file imports and uses `android.location.Location`, `android.location.LocationManager`
-- The function c(), from line 602 to 672, access `android.permission.ACCESS_COARSE_LOCATION` and `android.permission.ACCESS_FINE_LOCATION` permissions. Neither of the permission here is declared in the manifest file.
+- The function `c()`, from line 480 to 553, access `android.permission.ACCESS_COARSE_LOCATION` and `android.permission.ACCESS_FINE_LOCATION` permissions. Neither of the permission here is declared in the manifest file.
 - In function above, it also uses `getLastKnownLocation("network")` to access the location where the user connects to the Internet last time.
 
 Therefore, this is clearly a violation of the privacy policy made on the app official website.
 
-Although this function might be just a Twilight Manager that uses location to calculate the sun rise/down time.
+
+~~Although this function might be just a Twilight Manager that uses location to calculate the sun rise/down time.~~
+Method `c()` is found to have a high degree of resemblance to method `getLastKnowLocation()` and `updateState()` in `androidx\appcompat\app\TwilightManager.java` from `Covid Alert ND & WY_v1.2 `. It is believed that method `c()` is implementing a self-difined `isNight()`, although the reason why they would need this method remains unknown. Yet the app has never the less violating the privacy policy by accessing location of the user in method `c()`. See the code comparison in `comparison.md` under this folder.
 
 ### CODE ANALYSIS
 - The App uses an insecure Random Number Generator, java.util.Random. This should be replaced by java.secure.SecureRandom.
@@ -62,15 +65,15 @@ Although this function might be just a Twilight Manager that uses location to ca
     h/a/j1/h0.java
     h/a/j1/n2.java
     h/a/n1/a.java
-<!-- - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
-- [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
+- [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
+<!-- - [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
   - In `b/s/f.java`, when there is a `execSQL()`, the functions only take in an int and SQLiteDatabase; since we can't do any SQL injection with an int as input, this rawSQL seems to be safe. There is another variable `f2464b` contained an array of Strings. After manually checked all the places that uses this f class:
   ```
   .\gov\michigan\MiCovidExposure\storage\ExposureNotificationDatabase_Impl.java
   .\androidx\work\impl\WorkDatabase_Impl.java
   ```
-  The input string array used in both file is hardcoded and then passed to `f2464b`; therefore, this variable should be safe from any injection as well.
-- [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~
+  The input string array used in both file is hardcoded and then passed to `f2464b`; therefore, this variable should be safe from any injection as well. -->
+<!-- - [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~
   - In `b/q/d.java`, the function `public static void a(ZipFile zipFile, ZipEntry zipEntry, File file, String str)` creates the temp file to temperarely store the data from ZipFile input stream.
   - In `b/s/l.java`, the function `public final void a(File file)` uses the temp file to store the input `file`. This function is called in `b\s\l.java` function `public final void b()` to copy database file.
   - In both case, the temperary files are deleted after use. -->
@@ -79,9 +82,9 @@ Although this function might be just a Twilight Manager that uses location to ca
 
 
 ### SERVER LOCATIONS
-<!-- No suspicious servers or suspicious location of servers find here. -->
+No suspicious servers or suspicious location of servers find here.
 
 ### URL
-<!-- HTTP Connection made in `c/a/b/x/f.java`, and http URL find is `http://www.michigan.gov/coronavirus`. This might leak some info when requesting, but it won't cause any later leaking in a normal setting, because the server forces HTTPS on its end after manually testing.
+Lots of http URLs found in the app. Most of them are android/google sites or other open source websites. This might leak some info when requesting, but it won't cause any later leaking in a normal setting, because the servers forces HTTPS on server's end after manually testing.
 
-However, since the app allows the use of HTTP, it is vulnerable to Man-In-The-Middle attack. The attacker can talk to the app using HTTP but using HTTPS with the server. There might be potential info leaks made here. -->
+However, since the app allows the use of HTTP, it is vulnerable to Man-In-The-Middle attack. The attacker can talk to the app using HTTP but using HTTPS with the server. There might be potential info leaks made here.
