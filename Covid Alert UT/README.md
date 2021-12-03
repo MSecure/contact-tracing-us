@@ -39,7 +39,7 @@ SHA256: 2beb14c85da568344c972a21ca6ead23c1b9d86c17a39b39d8842ebc43c0e308
  - Service 
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
-    - These two are possibly false positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+    - False positive. Bacause these two permission are only used by Android System; and we assume that the system is not malicious.
 
 
  
