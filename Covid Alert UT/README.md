@@ -30,7 +30,7 @@ SHA256: 2beb14c85da568344c972a21ca6ead23c1b9d86c17a39b39d8842ebc43c0e308
  - Application Data can be Backed up [android:allowBackup=true]
    - This flag allows anyone to backup your application data via adb. It allows users who have enabled USB debugging to copy application data off of the device.
  - Broadcast Receiver
-   ~~- False Positive. The permission is mained by the Google API used.~~ 
+   - False Positive. The permission is mained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
