@@ -45,10 +45,6 @@ the analysis, it says the app inserts Sensitive Information into a Log File. (ht
 Random Values making the keys not so protected. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04g-Testing-Cryptography.md#weak-random-number-generators)
 -  retains keys and other sensitive information into its files evnetough it supposed to
 
-Ghera Violations:
-- This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f 
-directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)
-
 Manifest.xml Fixes:
 - Activity: Share DiagnosisActivity is shared amongst other apps on the device because it explicitly states android:exported to true
 - Broadcast Receiver: 
