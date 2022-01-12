@@ -49,7 +49,7 @@ Manifest.xml Fixes:
 - Activity: Share DiagnosisActivity is shared amongst other apps on the device because it explicitly states android:exported to true
 - Broadcast Receiver: 
 
-     -[False Positive, ExposureNotificationBroadcastReceiver needs to check the security of its permission in order to make sure that an application that specified the required       permission can send intents to the broadcast receiver], this permission is maintained by the Google ExposureNotification's API
+     - [False Positive, ExposureNotificationBroadcastReceiver needs to check the security of its permission in order to make sure that an application that specified the required       permission can send intents to the broadcast receiver], this permission is maintained by the Google ExposureNotification's API
      - ExposureNotificationDismissedReceiver is not explicityly state a value for android:exported therefore leading it to be shared with other apps
 - Service: [False Positive, EXPOSURE_CALLBACK permission for the service WakeUpService needs to have its protection level] this permission is once again checked by and maintained by the Google ExposureNotifications API
 
