@@ -10,6 +10,9 @@
 # Java class files
 *.class
 
+# File Name Too Long for Github
+Alabama_GuideSafe/10d1bdd2928eee8ba777ae9db6cb1fbd-java/kotlin/coroutines/intrinsics/IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__Intri.java
+
 # Generated files
 bin/
 gen/
