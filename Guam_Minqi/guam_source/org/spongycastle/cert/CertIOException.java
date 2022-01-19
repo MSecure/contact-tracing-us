@@ -1,0 +1,16 @@
+package org.spongycastle.cert;
+
+import java.io.IOException;
+
+public class CertIOException extends IOException {
+    public Throwable cause;
+
+    public CertIOException(String str, Throwable th) {
+        super(str);
+        this.cause = th;
+    }
+
+    public Throwable getCause() {
+        return this.cause;
+    }
+}

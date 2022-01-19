@@ -1,0 +1,83 @@
+package com.facebook.react.devsupport;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.Settings;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.android.tools.r8.GeneratedOutlineSupport;
+import com.facebook.common.logging.FLog;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.UiThreadUtil;
+
+public class DebugOverlayController {
+    public FrameLayout mFPSDebugViewContainer;
+    public final ReactContext mReactContext;
+    public final WindowManager mWindowManager;
+
+    public DebugOverlayController(ReactContext reactContext) {
+        this.mReactContext = reactContext;
+        this.mWindowManager = (WindowManager) reactContext.getSystemService("window");
+    }
+
+    public static boolean canHandleIntent(Context context, Intent intent) {
+        return intent.resolveActivity(context.getPackageManager()) != null;
+    }
+
+    public static boolean hasPermission(Context context, String str) {
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 4096);
+            if (packageInfo.requestedPermissions != null) {
+                for (String str2 : packageInfo.requestedPermissions) {
+                    if (str2.equals(str)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            FLog.e("ReactNative", "Error while retrieving package info", e);
+        }
+        return false;
+    }
+
+    public static boolean permissionCheck(Context context) {
+        return Settings.canDrawOverlays(context);
+    }
+
+    public static void requestPermission(Context context) {
+        if (!Settings.canDrawOverlays(context)) {
+            StringBuilder outline15 = GeneratedOutlineSupport.outline15("package:");
+            outline15.append(context.getPackageName());
+            Intent intent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse(outline15.toString()));
+            intent.setFlags(268435456);
+            FLog.w("ReactNative", "Overlay permissions needs to be granted in order for react native apps to run in dev mode");
+            if (canHandleIntent(context, intent)) {
+                context.startActivity(intent);
+            }
+        }
+    }
+
+    public void setFpsDebugViewVisible(final boolean z) {
+        UiThreadUtil.runOnUiThread(new Runnable() {
+            /* class com.facebook.react.devsupport.DebugOverlayController.AnonymousClass1 */
+
+            public void run() {
+                if (!z || DebugOverlayController.this.mFPSDebugViewContainer != null) {
+                    if (!z && DebugOverlayController.this.mFPSDebugViewContainer != null) {
+                        DebugOverlayController.this.mFPSDebugViewContainer.removeAllViews();
+                        DebugOverlayController.this.mWindowManager.removeView(DebugOverlayController.this.mFPSDebugViewContainer);
+                        DebugOverlayController.this.mFPSDebugViewContainer = null;
+                    }
+                } else if (!DebugOverlayController.permissionCheck(DebugOverlayController.this.mReactContext)) {
+                    FLog.d("ReactNative", "Wait for overlay permission to be set");
+                } else {
+                    DebugOverlayController.this.mFPSDebugViewContainer = new FpsView(DebugOverlayController.this.mReactContext);
+                    DebugOverlayController.this.mWindowManager.addView(DebugOverlayController.this.mFPSDebugViewContainer, new WindowManager.LayoutParams(-1, -1, WindowOverlayCompat.TYPE_SYSTEM_OVERLAY, 24, -3));
+                }
+            }
+        });
+    }
+}

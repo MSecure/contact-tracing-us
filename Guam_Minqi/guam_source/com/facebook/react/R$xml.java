@@ -1,0 +1,5 @@
+package com.facebook.react;
+
+public final class R$xml {
+    public static final int rn_dev_preferences = 2131886080;
+}
