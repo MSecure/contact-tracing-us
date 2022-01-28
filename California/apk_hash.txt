@@ -1,0 +1,19 @@
+APK is signed
+v1 signature: True
+v2 signature: True
+v3 signature: True
+Found 1 unique certificates
+Subject: C=US, ST=California, L=Mountain View, O=Google Inc., OU=Android, CN=Android
+Signature Algorithm: rsassa_pkcs1v15
+Valid From: 2020-09-11 17:14:39+00:00
+Valid To: 2050-09-11 17:14:39+00:00
+Issuer: C=US, ST=California, L=Mountain View, O=Google Inc., OU=Android, CN=Android
+Serial Number: 0x5071a2a9c15602e5dffdf1e4d49edee97ce78af0
+Hash Algorithm: sha256
+md5: 0c91c6d718ac6f2b71ab183d26a42d6d
+sha1: 5c6799da2ba27769a0dd4be60fc2af85002ef616
+sha256: ad11797f06bf933b7d436f0ff633b3a083fa173b329278542c8acd4d77bbe94a
+sha512: 8bb97825cc6f63ae47b089b2ad95f46c169aff76cf13d946b15d17da85d83213806a18b112cde482f92e65247601053090f60a0cb1a16ebc2737e3f5515bc05a
+PublicKey Algorithm: rsa
+Bit Size: 4096
+Fingerprint: 5153c252b57fedf68c0da602515baddc4d7d9de739afb16b1904f33c22c1a758

@@ -1,0 +1,42 @@
+package androidx.transition;
+
+public final class R$id {
+    public static final int action_container = 2131230781;
+    public static final int action_divider = 2131230783;
+    public static final int action_image = 2131230784;
+    public static final int action_text = 2131230790;
+    public static final int actions = 2131230791;
+    public static final int async = 2131230803;
+    public static final int blocking = 2131230812;
+    public static final int chronometer = 2131230829;
+    public static final int forever = 2131230893;
+    public static final int ghost_view = 2131230896;
+    public static final int ghost_view_holder = 2131230897;
+    public static final int icon = 2131230907;
+    public static final int icon_group = 2131230908;
+    public static final int info = 2131230914;
+    public static final int italic = 2131230916;
+    public static final int line1 = 2131230925;
+    public static final int line3 = 2131230926;
+    public static final int normal = 2131230966;
+    public static final int notification_background = 2131230967;
+    public static final int notification_main_column = 2131230968;
+    public static final int notification_main_column_container = 2131230969;
+    public static final int parent_matrix = 2131230978;
+    public static final int right_icon = 2131230995;
+    public static final int right_side = 2131230996;
+    public static final int save_non_transition_alpha = 2131231007;
+    public static final int save_overlay_view = 2131231008;
+    public static final int tag_transition_group = 2131231067;
+    public static final int tag_unhandled_key_event_manager = 2131231068;
+    public static final int tag_unhandled_key_listeners = 2131231069;
+    public static final int text = 2131231072;
+    public static final int text2 = 2131231073;
+    public static final int time = 2131231083;
+    public static final int title = 2131231084;
+    public static final int transition_current_scene = 2131231093;
+    public static final int transition_layout_save = 2131231094;
+    public static final int transition_position = 2131231095;
+    public static final int transition_scene_layoutid_cache = 2131231096;
+    public static final int transition_transform = 2131231097;
+}
