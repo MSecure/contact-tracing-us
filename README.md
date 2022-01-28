@@ -28,8 +28,8 @@ List of Apps covered in this project:
 |USA - Maryland	|gov.md.covid19.exposurenotifications | ❌
 |USA - Massachusetts	|Android Settings Integration | ❌
 |USA - Michigan	|gov.michigan.MiCovidExposure | ✔️
-|USA - Minnesota	|org.pathcheck.covidsafepathsBt.mn | ✔️
-|USA - Nevada	|gov.nv.dhhs.en | ✔️
+|USA - Minnesota	|org.pathcheck.covidsafepathsBt.mn | ❌
+|USA - Nevada	|gov.nv.dhhs.en | ❌
 |USA - New Jersey	|com.nj.gov.covidalert | ✔️
 |USA - New Mexico	|gov.nm.covid19.exposurenotifications | ❌
 |USA - New York	|gov.ny.health.proximity | ✔️
@@ -38,6 +38,6 @@ List of Apps covered in this project:
 |USA - Pennsylvania	|gov.pa.covidtracker| ✔️
 |USA - Utah	|gov.ut.covid19.exposurenotifications | ✔️
 |USA - Virginia	|gov.vdh.exposurenotification | ❌
-|USA - Washington	|gov.wa.doh.exposurenotifications | ❌
+|USA - Washington	|gov.wa.doh.exposurenotifications | ✔️
 |USA - Wisconsin	|gov.wi.covid19.exposurenotifications | ❌
 |USA - Wyoming	|com.proudcrowd.exposure | ✔️
