@@ -24,7 +24,7 @@ List of Apps covered in this project:
 |USA - District of Columbia	|gov.dc.covid19.exposurenotifications | ✔️
 |USA - Guam	|org.pathcheck.guam.bt | 🚧
 |USA - Hawaii	|org.alohasafe.alert | ✔️
-|USA - Louisiana	|org.pathcheck.la.bt | ❌
+|USA - Louisiana	|org.pathcheck.la.bt | 🚧
 |USA - Maryland	|gov.md.covid19.exposurenotifications | ❌
 |USA - Massachusetts	|Android Settings Integration | ❌
 |USA - Michigan	|gov.michigan.MiCovidExposure | ✔️
