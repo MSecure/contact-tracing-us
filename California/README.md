@@ -1,6 +1,7 @@
 # Covid CA Notify App(Mihir Madhira)
 
 ## APK Info
+This information also exists in the MobSF pdf of the app as well as the apk_hash.txt file. 
 ```
   APK Signature:
   MD%: 0c91c6d718ac6f2b71ab183d26a42d6d
