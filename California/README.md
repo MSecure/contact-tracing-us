@@ -1,7 +1,7 @@
 # Covid CA Notify App(Mihir Madhira)
 
 ## App Permissions:
-- Internet
+- Internet: ''' <android.permission.ACCESS_NETWORK_STATE/> '''
 - Bluetooth
 - Access Network State
 - Wake Lock
