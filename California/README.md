@@ -16,7 +16,8 @@ Users may turn the system on or off at any time, or uninstall the app on an Andr
 The system does not collect, track or store users’ location, GPS information, or personal 
 information.
 
-## This is the Privacy Policy for CA Notify app for Covid Tracing: https://canotify.ca.gov/privacy/
+## This is the Privacy Policy for CA Notify app for Covid Tracing: 
+### https://canotify.ca.gov/privacy/
 
 - only data used are the anonymous keys, Bluetooth signal strength, and date and duration of
 exposure
@@ -35,6 +36,14 @@ the COVID-19 positive user’s identity, location, phone number, or any other pe
 information.
 - information will not include any personal or location information, nor can it be 
 used to identify any system user.
+
+## Manifest Analysis
+- Activity: ``com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity`` is not protected
+- Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
+- Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists
+- Service: ``com.google.android.gms.nearby.exposurenotification.WakeUpService`` is protected by a permission but the permission level should also be checked
+- Service: ``androidx.work.impl.background.systemjob.SystemJobService`` is protected by a permission but the protection level of the permission should be checked
+- Broadcast Receiver: ``androidx.work.impl.diagnostics.DiagnosticsReceiver`` is protected by a permission but the protection level of the permissio should be checked
 
 ## Privacy Policy Violations:
 - The Privacy Policy says that the app doesn't store private information however after running
