@@ -1,5 +1,13 @@
 # Covid CA Notify App(Mihir Madhira)
 
+## APK Info
+```
+  APK Signature:
+  MD%: 0c91c6d718ac6f2b71ab183d26a42d6d
+  SHA-1: 5c6799da2ba27769a0dd4be60fc2af85002ef616
+  SHA-256: ad11797f06bf933b7d436f0ff633b3a083fa173b329278542c8acd4d77bbe94a
+```
+
 ## App Permissions:
 - Network Status: ``<android.permission.ACCESS_NETWORK_STATE/>``
 - Bluetooth: ``<android.permission.BLUETOOTH/>``
