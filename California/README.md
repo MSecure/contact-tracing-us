@@ -39,23 +39,34 @@ used to identify any system user.
 
 ## Manifest Analysis
 - Activity: ``com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity`` is not protected
+  - On line 41 in SharedDiagnosisActivity.java file, in the onActivityResult method it creates a bundle to allow it to share data amongst other activities in the application
+  - TODO: need to do more research into if there can be a plausible vulnerability from this 
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
-- Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists
+- Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists 
+  - This broadcast receiver allows the app to dismiss notifications for the appliation by changing the shared preferences as shown in lines 16-19 where the app accordingly changes the shared preference based on if the Intent is a "Notification_Dissmissed_Action_ID".
+  - The lack of a permission to protect the DismissedReceiver allows a malicious app to send Intents that access and change the sharedPreferences of the app
 - Service: ``com.google.android.gms.nearby.exposurenotification.WakeUpService`` is protected by a permission but the permission level should also be checked
+  - permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
+  - The permission backed by the Google Exposure Notification API 
 - Service: ``androidx.work.impl.background.systemjob.SystemJobService`` is protected by a permission but the protection level of the permission should be checked
+  - permission: ``android.permission.BIND_JOB_SERVICE``
+  - This permission is protected by signature level protection where in which the system can only accepted by the system if the requesting app and the current application have the same signature. 
 - Broadcast Receiver: ``androidx.work.impl.diagnostics.DiagnosticsReceiver`` is protected by a permission but the protection level of the permissio should be checked
+  - permission: `android.permission.DUMP`
+
+## Server Locations:
+- Most servers exist within the US except for 2 of them: one exists in Districto Capital de Bogoto, Colombia and another in Maharastra, India. 
 
 ## Privacy Policy Violations:
-- The Privacy Policy says that the app doesn't store private information however after running
-the analysis, it says the app inserts Sensitive Information into a Log File. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#logs)
-- To protect the keys it keeps changing the key values; however, they use insufficient 
-Random Values making the keys not so protected.(https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04g-Testing-Cryptography.md#weak-random-number-generators)
-- retains keys and other sensitive information into its files evnetough it supposed to 
+- [False Positive] ~~The Privacy Policy says that the app doesn't store private information however after running
+the analysis, it says the app inserts Sensitive Information into a Log File. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#logs)~~ After looking through each file, there were no sensitive information recorded and only String constants were recorded. 
+- [False Positive]~~To protect the keys it keeps changing the key values; however, they use insufficient 
+Random Values making the keys not so protected.(https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04g-Testing-Cryptography.md#weak-random-number-generators)~~ The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.
+- [False Positive]~~retains keys and other sensitive information into its files evnetough it supposed to~~ a string constant was input in the file `h/a/k1/f.java`. 
 
 
 ## Ghera Violations:
-- This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f 
-directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)
+.- [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. 
 
 
 
