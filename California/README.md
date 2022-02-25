@@ -1,12 +1,12 @@
 # Covid CA Notify App(Mihir Madhira)
 
 ## App Permissions:
-- Internet: ``<android.permission.ACCESS_NETWORK_STATE/>``
-- Bluetooth
-- Access Network State
-- Wake Lock
-- Recieve Boot Completed
-- Foreground Service
+- Network Status: ``<android.permission.ACCESS_NETWORK_STATE/>``
+- Bluetooth: ``<android.permission.BLUETOOTH/>``
+- Foreground Service: ``<android.permission.FOREGROUND_SERVICE/>``
+- Internet Access: ``<android.permission.INTERNET/>``
+- Recieve Boot Completed: ``<android.permission.RECEIVE_BOOT_COMPLETED/>``
+- Wake Lock: ``<android.permission.WAKE_LOCK/>``
 
 ## Privacy Policy:
 CA Notify has the potential to help stop the spread of the infection and its use is 
