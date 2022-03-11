@@ -4,7 +4,7 @@
 This information also exists in the MobSF pdf of the app as well as the apk_hash.txt file. 
 ```
   APK Signature:
-  MD%: 0c91c6d718ac6f2b71ab183d26a42d6d
+  MD5: 0c91c6d718ac6f2b71ab183d26a42d6d
   SHA-1: 5c6799da2ba27769a0dd4be60fc2af85002ef616
   SHA-256: ad11797f06bf933b7d436f0ff633b3a083fa173b329278542c8acd4d77bbe94a
 ```
@@ -25,8 +25,7 @@ Users may turn the system on or off at any time, or uninstall the app on an Andr
 The system does not collect, track or store users’ location, GPS information, or personal 
 information.
 
-## This is the Privacy Policy for CA Notify app for Covid Tracing: 
-### https://canotify.ca.gov/privacy/
+This is the Privacy Policy for CA Notify app for Covid Tracing: https://canotify.ca.gov/privacy/
 
 - only data used are the anonymous keys, Bluetooth signal strength, and date and duration of
 exposure
