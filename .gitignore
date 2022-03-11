@@ -1,11 +1,10 @@
 #Source Files and gml files
-Utah/775d5cad9173c1988958bee531915fa6-java
-"North Dakota and Wyoming/cd23393dda79fd4987d6fe5bc8505611-java"
-"North Carolina/b69f2a404980f66f00ea1b8aa951621d-java"
-Michigan/7a09c47bfedfa7ae69fb22b455b065a6-java
-Guam/guam_source
-Colorado/05fe369de5ff42442f6e1036d48d114d-java
-California/f1428a2f83e80b20eae644c902bc20e6-java
+Utah/775d5cad9173c1988958bee531915fa6-java/*
+"North Dakota and Wyoming/cd23393dda79fd4987d6fe5bc8505611-java/*"
+"North Carolina/b69f2a404980f66f00ea1b8aa951621d-java/*"
+Michigan/7a09c47bfedfa7ae69fb22b455b065a6-java/*
+Colorado/05fe369de5ff42442f6e1036d48d114d-java/*
+California/f1428a2f83e80b20eae644c902bc20e6-java/*
 *.gml
 
 # Built application files
