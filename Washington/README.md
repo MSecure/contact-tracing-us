@@ -1,14 +1,24 @@
 # WA Notify Analysis
 
+## APK Info
+This information also exists in the MobSF pdf of the app as well as the apk_hash.txt file. 
+```
+  APK Signature:
+  MD5: f99f9ea23666c8688c3f7194e046b674
+  SHA1: e6e41e81e21499573e11f80910a0a56a5a90499d
+  SHA256: 579d75c6276c8cd818288a136944ba72bcc6b3e4b5168702f5da9cf9b7c1c028
+```
+
 ## App's Permissions:
-- ACCESS_NETWORK_STATE
-- BLUETOTTH
-- FOREGROUND_SERVICE
-- INTERNET
-- RECEIVE_BOOT_COMPLETED
-- WAKE_LOCK
+- Network Status: ``<android.permission.ACCESS_NETWORK_STATE/>``
+- Bluetooth: ``<android.permission.BLUETOOTH/>``
+- Foreground Service: ``<android.permission.FOREGROUND_SERVICE/>``
+- Internet Access: ``<android.permission.INTERNET/>``
+- Recieve Boot Completed: ``<android.permission.RECEIVE_BOOT_COMPLETED/>``
+- Wake Lock: ``<android.permission.WAKE_LOCK/>``
 
 ## WA Privacy Policy:
+This is the Privacy Policy for WA Notify app for Covid Tracing: https://doh.wa.gov/emergencies/covid-19/wa-notify/privacy-policy
 - containing data elements that can't be used to detect an individual
 	- Random Codes: these hashed codes are stored 14 days and then 
 	  shared via bluetooth to check for possible exposure.
