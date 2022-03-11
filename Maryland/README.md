@@ -28,6 +28,7 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 - They also store information regarding tech phone calls or conversations you had with them in the past 
 - They use the Security Socket Layers given from when you sign in to encrypt transmission of data and information
 - They share the minimum data and data that is not identifiable to you such as your phone number to access certain services. 
+- Privacy Policy contracdiction when retrieving Location..
 
 ## Manifest Analysis:
 - Activity-Alias: `om.google.android.apps.exposurenotification.ENNotifyOthers` is not protected:
