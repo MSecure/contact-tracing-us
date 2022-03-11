@@ -51,7 +51,7 @@ generates codes
   - permission: `android.permission.DUMP`
 
 ## Server Locations:
-- Most servers exist within the US except for 2 of them: one exists in Districto Capital de Bogoto, Columbia; Dublin, Ireland; and Noord-Holland, Neatherlands. 
+- Most servers exist within the US except for 3 of them: one exists in Districto Capital de Bogoto, Columbia; Dublin, Ireland; and Noord-Holland, Neatherlands. 
 
 ## Privacy Violation:
 - It says that it doesn't log private info, however according to the report
