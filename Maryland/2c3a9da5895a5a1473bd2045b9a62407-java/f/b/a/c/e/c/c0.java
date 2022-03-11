@@ -1,0 +1,54 @@
+package f.b.a.c.e.c;
+
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable;
+import e.b.a.m;
+import f.b.a.c.b.m.n.a;
+import java.util.Arrays;
+
+public final class c0 extends a {
+    public static final Parcelable.Creator<c0> CREATOR = new d0();
+    public f1 b;
+    public String c;
+
+    public c0() {
+    }
+
+    public c0(IBinder iBinder, String str) {
+        f1 f1Var;
+        if (iBinder == null) {
+            f1Var = null;
+        } else {
+            IInterface queryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.nearby.exposurenotification.internal.IExposureWindowListCallback");
+            f1Var = queryLocalInterface instanceof f1 ? (f1) queryLocalInterface : new d1(iBinder);
+        }
+        this.b = f1Var;
+        this.c = str;
+    }
+
+    public /* synthetic */ c0(b0 b0Var) {
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof c0) {
+            c0 c0Var = (c0) obj;
+            return m.h.U(this.b, c0Var.b) && m.h.U(this.c, c0Var.c);
+        }
+    }
+
+    public final int hashCode() {
+        return Arrays.hashCode(new Object[]{this.b, this.c});
+    }
+
+    public final void writeToParcel(Parcel parcel, int i2) {
+        int I1 = m.h.I1(parcel, 20293);
+        m.h.B1(parcel, 1, this.b.asBinder(), false);
+        m.h.F1(parcel, 2, this.c, false);
+        m.h.N1(parcel, I1);
+    }
+}

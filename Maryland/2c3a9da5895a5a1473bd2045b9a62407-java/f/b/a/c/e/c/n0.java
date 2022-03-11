@@ -1,0 +1,35 @@
+package f.b.a.c.e.c;
+
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable;
+import e.b.a.m;
+
+public final class n0 implements Parcelable.Creator<m0> {
+    /* Return type fixed from 'java.lang.Object' to match base method */
+    @Override // android.os.Parcelable.Creator
+    public final m0 createFromParcel(Parcel parcel) {
+        int v1 = m.h.v1(parcel);
+        IBinder iBinder = null;
+        IBinder iBinder2 = null;
+        while (parcel.dataPosition() < v1) {
+            int readInt = parcel.readInt();
+            int i2 = 65535 & readInt;
+            if (i2 == 1) {
+                iBinder = m.h.S0(parcel, readInt);
+            } else if (i2 != 2) {
+                m.h.k1(parcel, readInt);
+            } else {
+                iBinder2 = m.h.S0(parcel, readInt);
+            }
+        }
+        m.h.T(parcel, v1);
+        return new m0(iBinder, iBinder2);
+    }
+
+    /* Return type fixed from 'java.lang.Object[]' to match base method */
+    @Override // android.os.Parcelable.Creator
+    public final /* bridge */ /* synthetic */ m0[] newArray(int i2) {
+        return new m0[i2];
+    }
+}

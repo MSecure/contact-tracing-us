@@ -1,0 +1,1321 @@
+package h.a.k1;
+
+import f.b.b.a.k;
+import f.b.b.a.s;
+import f.b.b.a.t;
+import f.b.b.a.u;
+import f.e.a.b;
+import f.e.a.d;
+import h.a.a;
+import h.a.c1;
+import h.a.d0;
+import h.a.d1;
+import h.a.f1;
+import h.a.j;
+import h.a.j1.c3;
+import h.a.j1.j1;
+import h.a.j1.p0;
+import h.a.j1.q0;
+import h.a.j1.q2;
+import h.a.j1.t2;
+import h.a.j1.u0;
+import h.a.j1.v;
+import h.a.j1.v0;
+import h.a.j1.w;
+import h.a.j1.w0;
+import h.a.j1.w2;
+import h.a.j1.x0;
+import h.a.j1.y1;
+import h.a.j1.z;
+import h.a.k1.b;
+import h.a.k1.f;
+import h.a.k1.h;
+import h.a.k1.p.m.b;
+import h.a.k1.p.m.f;
+import h.a.k1.p.m.i;
+import h.a.n0;
+import h.a.o0;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.IDN;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.URI;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.net.SocketFactory;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSocketFactory;
+import k.h;
+import k.l;
+import k.m;
+import k.o;
+/* loaded from: classes.dex */
+public class g implements z, b.a {
+    public static final Map<h.a.k1.p.m.a, c1> Q;
+    public static final Logger R = Logger.getLogger(g.class.getName());
+    public static final f[] S = new f[0];
+    public HostnameVerifier A;
+    public final h.a.k1.p.b D;
+    public ScheduledExecutorService E;
+    public j1 F;
+    public boolean G;
+    public long H;
+    public long I;
+    public boolean J;
+    public final Runnable K;
+    public final int L;
+    public final boolean M;
+    public final c3 N;
+    public final h.a.z P;
+    public final InetSocketAddress a;
+    public final String b;
+    public final String c;
+
+    /* renamed from: e */
+    public final u<s> f4407e;
+
+    /* renamed from: f */
+    public final int f4408f;
+
+    /* renamed from: g */
+    public y1.a f4409g;
+
+    /* renamed from: h */
+    public b f4410h;
+
+    /* renamed from: i */
+    public n f4411i;
+
+    /* renamed from: j */
+    public final Object f4412j;
+
+    /* renamed from: k */
+    public final d0 f4413k;
+    public final Executor n;
+    public final q2 o;
+    public final int p;
+    public int q;
+    public e r;
+    public h.a.a s;
+    public c1 t;
+    public boolean u;
+    public w0 v;
+    public boolean w;
+    public boolean x;
+    public final SocketFactory y;
+    public SSLSocketFactory z;
+
+    /* renamed from: d */
+    public final Random f4406d = new Random();
+    public final Map<Integer, f> m = new HashMap();
+    public int B = 0;
+    public final LinkedList<f> C = new LinkedList<>();
+    public final x0<f> O = new a();
+
+    /* renamed from: l */
+    public int f4414l = 3;
+
+    /* loaded from: classes.dex */
+    public class a extends x0<f> {
+        public a() {
+            g.this = r1;
+        }
+
+        public void a() {
+            g.this.f4409g.c(true);
+        }
+
+        public void b() {
+            g.this.f4409g.c(false);
+        }
+    }
+
+    /* loaded from: classes.dex */
+    public class b implements Runnable {
+        public b() {
+            g.this = r1;
+        }
+
+        public void run() {
+            Objects.requireNonNull(g.this);
+            g gVar = g.this;
+            Objects.requireNonNull(gVar);
+            Objects.requireNonNull(g.this);
+            gVar.r = new e(null, null);
+            g gVar2 = g.this;
+            gVar2.n.execute(gVar2.r);
+            synchronized (g.this.f4412j) {
+                g gVar3 = g.this;
+                gVar3.B = Integer.MAX_VALUE;
+                gVar3.w();
+            }
+            Objects.requireNonNull(g.this);
+            throw null;
+        }
+    }
+
+    /* loaded from: classes.dex */
+    public class c implements Runnable {
+        public final /* synthetic */ CountDownLatch b;
+        public final /* synthetic */ a c;
+
+        /* renamed from: d */
+        public final /* synthetic */ i f4415d;
+
+        /* loaded from: classes.dex */
+        public class a implements k.s {
+            public a(c cVar) {
+            }
+
+            public void close() {
+            }
+
+            public long m(k.e eVar, long j2) {
+                return -1;
+            }
+        }
+
+        public c(CountDownLatch countDownLatch, a aVar, i iVar) {
+            g.this = r1;
+            this.b = countDownLatch;
+            this.c = aVar;
+            this.f4415d = iVar;
+        }
+
+        /*  JADX ERROR: JadxRuntimeException in pass: SSATransform
+            jadx.core.utils.exceptions.JadxRuntimeException: Not initialized variable reg: 1, insn: 0x0143: MOVE  (r4 I:??[OBJECT, ARRAY]) = (r1 I:??[OBJECT, ARRAY]), block:B:47:0x0143
+            	at jadx.core.dex.visitors.ssa.SSATransform.renameVarsInBlock(SSATransform.java:171)
+            	at jadx.core.dex.visitors.ssa.SSATransform.renameVariables(SSATransform.java:143)
+            	at jadx.core.dex.visitors.ssa.SSATransform.process(SSATransform.java:60)
+            	at jadx.core.dex.visitors.ssa.SSATransform.visit(SSATransform.java:41)
+            */
+        public void run() {
+            /*
+            // Method dump skipped, instructions count: 342
+            */
+            throw new UnsupportedOperationException("Method not decompiled: h.a.k1.g.c.run():void");
+        }
+    }
+
+    /* loaded from: classes.dex */
+    public class d implements Runnable {
+        public d() {
+            g.this = r1;
+        }
+
+        public void run() {
+            g gVar = g.this;
+            gVar.n.execute(gVar.r);
+            synchronized (g.this.f4412j) {
+                g gVar2 = g.this;
+                gVar2.B = Integer.MAX_VALUE;
+                gVar2.w();
+            }
+        }
+    }
+
+    /* loaded from: classes.dex */
+    public class e implements b.a, Runnable {
+        public final h b;
+        public h.a.k1.p.m.b c;
+
+        /* renamed from: d */
+        public boolean f4417d;
+
+        public e(g gVar, h.a.k1.p.m.b bVar) {
+            h hVar = new h(Level.FINE, g.class);
+            g.this = gVar;
+            this.f4417d = true;
+            this.c = bVar;
+            this.b = hVar;
+        }
+
+        public e(h.a.k1.p.m.b bVar, h hVar) {
+            g.this = r1;
+            this.f4417d = true;
+            this.c = null;
+            this.b = null;
+        }
+
+        public void run() {
+            IOException e2;
+            String name = Thread.currentThread().getName();
+            Thread.currentThread().setName("OkHttpClientTransport");
+            while (((f.c) this.c).c(this)) {
+                try {
+                    j1 j1Var = g.this.F;
+                    if (j1Var != null) {
+                        j1Var.a();
+                    }
+                } catch (Throwable th) {
+                    try {
+                        g gVar = g.this;
+                        h.a.k1.p.m.a aVar = h.a.k1.p.m.a.PROTOCOL_ERROR;
+                        c1 f2 = c1.m.g("error in frame handler").f(th);
+                        Map<h.a.k1.p.m.a, c1> map = g.Q;
+                        gVar.v(0, aVar, f2);
+                        try {
+                            ((f.c) this.c).b.close();
+                        } catch (IOException e3) {
+                            e2 = e3;
+                            g.R.log(Level.INFO, "Exception closing frame reader", (Throwable) e2);
+                            g.this.f4409g.a();
+                            Thread.currentThread().setName(name);
+                        }
+                    } catch (Throwable th2) {
+                        try {
+                            ((f.c) this.c).b.close();
+                        } catch (IOException e4) {
+                            g.R.log(Level.INFO, "Exception closing frame reader", (Throwable) e4);
+                        }
+                        g.this.f4409g.a();
+                        Thread.currentThread().setName(name);
+                        throw th2;
+                    }
+                }
+            }
+            g gVar2 = g.this;
+            h.a.k1.p.m.a aVar2 = h.a.k1.p.m.a.INTERNAL_ERROR;
+            c1 g2 = c1.n.g("End of stream or IOException");
+            Map<h.a.k1.p.m.a, c1> map2 = g.Q;
+            gVar2.v(0, aVar2, g2);
+            try {
+                ((f.c) this.c).b.close();
+            } catch (IOException e5) {
+                e2 = e5;
+                g.R.log(Level.INFO, "Exception closing frame reader", (Throwable) e2);
+                g.this.f4409g.a();
+                Thread.currentThread().setName(name);
+            }
+            g.this.f4409g.a();
+            Thread.currentThread().setName(name);
+        }
+    }
+
+    static {
+        EnumMap enumMap = new EnumMap(h.a.k1.p.m.a.class);
+        h.a.k1.p.m.a aVar = h.a.k1.p.m.a.NO_ERROR;
+        c1 c1Var = c1.m;
+        enumMap.put((EnumMap) aVar, (h.a.k1.p.m.a) c1Var.g("No error: A GRPC status of OK should have been sent"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.PROTOCOL_ERROR, (h.a.k1.p.m.a) c1Var.g("Protocol error"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.INTERNAL_ERROR, (h.a.k1.p.m.a) c1Var.g("Internal error"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.FLOW_CONTROL_ERROR, (h.a.k1.p.m.a) c1Var.g("Flow control error"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.STREAM_CLOSED, (h.a.k1.p.m.a) c1Var.g("Stream closed"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.FRAME_TOO_LARGE, (h.a.k1.p.m.a) c1Var.g("Frame too large"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.REFUSED_STREAM, (h.a.k1.p.m.a) c1.n.g("Refused stream"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.CANCEL, (h.a.k1.p.m.a) c1.f4088g.g("Cancelled"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.COMPRESSION_ERROR, (h.a.k1.p.m.a) c1Var.g("Compression error"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.CONNECT_ERROR, (h.a.k1.p.m.a) c1Var.g("Connect error"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.ENHANCE_YOUR_CALM, (h.a.k1.p.m.a) c1.f4093l.g("Enhance your calm"));
+        enumMap.put((EnumMap) h.a.k1.p.m.a.INADEQUATE_SECURITY, (h.a.k1.p.m.a) c1.f4091j.g("Inadequate security"));
+        Q = Collections.unmodifiableMap(enumMap);
+    }
+
+    public g(InetSocketAddress inetSocketAddress, String str, String str2, h.a.a aVar, Executor executor, SocketFactory socketFactory, SSLSocketFactory sSLSocketFactory, HostnameVerifier hostnameVerifier, h.a.k1.p.b bVar, int i2, int i3, h.a.z zVar, Runnable runnable, int i4, c3 c3Var, boolean z) {
+        Object obj = new Object();
+        this.f4412j = obj;
+        f.b.a.c.b.o.b.A(inetSocketAddress, "address");
+        this.a = inetSocketAddress;
+        this.b = str;
+        this.p = i2;
+        this.f4408f = i3;
+        f.b.a.c.b.o.b.A(executor, "executor");
+        this.n = executor;
+        this.o = new q2(executor);
+        this.y = socketFactory == null ? SocketFactory.getDefault() : socketFactory;
+        this.z = sSLSocketFactory;
+        this.A = hostnameVerifier;
+        f.b.a.c.b.o.b.A(bVar, "connectionSpec");
+        this.D = bVar;
+        this.f4407e = q0.o;
+        StringBuilder sb = new StringBuilder();
+        if (str2 != null) {
+            sb.append(str2);
+            sb.append(' ');
+        }
+        sb.append("grpc-java-");
+        sb.append("okhttp");
+        sb.append('/');
+        sb.append("1.28.0");
+        this.c = sb.toString();
+        this.P = zVar;
+        f.b.a.c.b.o.b.A(runnable, "tooManyPingsRunnable");
+        this.K = runnable;
+        this.L = i4;
+        this.N = c3Var;
+        this.f4413k = d0.a(g.class, inetSocketAddress.toString());
+        a.b a2 = h.a.a.a();
+        a2.b(p0.f4283e, aVar);
+        this.s = a2.a();
+        this.M = z;
+        synchronized (obj) {
+        }
+    }
+
+    public static Socket h(g gVar, InetSocketAddress inetSocketAddress, InetSocketAddress inetSocketAddress2, String str, String str2) {
+        String str3;
+        Objects.requireNonNull(gVar);
+        try {
+            Socket createSocket = inetSocketAddress2.getAddress() != null ? gVar.y.createSocket(inetSocketAddress2.getAddress(), inetSocketAddress2.getPort()) : gVar.y.createSocket(inetSocketAddress2.getHostName(), inetSocketAddress2.getPort());
+            createSocket.setTcpNoDelay(true);
+            k.s c2 = l.c(createSocket);
+            m mVar = new m(l.b(createSocket));
+            f.e.a.d j2 = gVar.j(inetSocketAddress, str, str2);
+            f.e.a.b bVar = j2.a;
+            mVar.d(String.format("CONNECT %s:%d HTTP/1.1", bVar.a, Integer.valueOf(bVar.b)));
+            mVar.d("\r\n");
+            int length = j2.b.a.length / 2;
+            for (int i2 = 0; i2 < length; i2++) {
+                f.e.a.a aVar = j2.b;
+                Objects.requireNonNull(aVar);
+                int i3 = i2 * 2;
+                if (i3 >= 0) {
+                    String[] strArr = aVar.a;
+                    if (i3 < strArr.length) {
+                        str3 = strArr[i3];
+                        mVar.d(str3);
+                        mVar.d(": ");
+                        mVar.d(j2.b.a(i2));
+                        mVar.d("\r\n");
+                    }
+                }
+                str3 = null;
+                mVar.d(str3);
+                mVar.d(": ");
+                mVar.d(j2.b.a(i2));
+                mVar.d("\r\n");
+            }
+            mVar.d("\r\n");
+            mVar.flush();
+            f.e.a.e.a.a a2 = f.e.a.e.a.a.a(s(c2));
+            while (!s(c2).equals("")) {
+            }
+            int i4 = a2.b;
+            if (i4 >= 200 && i4 < 300) {
+                return createSocket;
+            }
+            k.e eVar = new k.e();
+            try {
+                createSocket.shutdownOutput();
+                ((k.b) c2).m(eVar, 1024);
+            } catch (IOException e2) {
+                eVar.Y("Unable to read body: " + e2.toString());
+            }
+            try {
+                createSocket.close();
+            } catch (IOException unused) {
+            }
+            throw new d1(c1.n.g(String.format("Response returned from proxy was not successful (expected 2xx, got %d %s). Response body:\n%s", Integer.valueOf(a2.b), a2.c, eVar.L())));
+        } catch (IOException e3) {
+            throw new d1(c1.n.g("Failed trying to connect with proxy").f(e3));
+        }
+    }
+
+    public static void i(g gVar, h.a.k1.p.m.a aVar, String str) {
+        Objects.requireNonNull(gVar);
+        gVar.v(0, aVar, z(aVar).a(str));
+    }
+
+    public static String s(k.s sVar) {
+        long j2;
+        o oVar;
+        k.e eVar = new k.e();
+        while (((k.b) sVar).m(eVar, 1) != -1) {
+            if (eVar.t(eVar.c - 1) == 10) {
+                long j3 = eVar.c;
+                long j4 = Long.MAX_VALUE;
+                if (Long.MAX_VALUE > j3) {
+                    j4 = j3;
+                }
+                long j5 = 0;
+                if (!(0 == j4 || (oVar = eVar.b) == null)) {
+                    if (j3 - 0 >= 0) {
+                        j3 = 0;
+                        while (true) {
+                            long j6 = ((long) (oVar.c - oVar.b)) + j3;
+                            if (j6 >= 0) {
+                                break;
+                            }
+                            oVar = oVar.f4592f;
+                            j3 = j6;
+                        }
+                    } else {
+                        while (j3 > 0) {
+                            oVar = oVar.f4593g;
+                            j3 -= (long) (oVar.c - oVar.b);
+                        }
+                    }
+                    loop3: while (j3 < j4) {
+                        byte[] bArr = oVar.a;
+                        int min = (int) Math.min((long) oVar.c, (((long) oVar.b) + j4) - j3);
+                        for (int i2 = (int) ((((long) oVar.b) + j5) - j3); i2 < min; i2++) {
+                            if (bArr[i2] == 10) {
+                                j2 = ((long) (i2 - oVar.b)) + j3;
+                                break loop3;
+                            }
+                        }
+                        j5 = ((long) (oVar.c - oVar.b)) + j3;
+                        oVar = oVar.f4592f;
+                        j3 = j5;
+                    }
+                }
+                j2 = -1;
+                if (j2 == -1) {
+                    if (Long.MAX_VALUE < eVar.c && eVar.t(9223372036854775806L) == 13 && eVar.t(Long.MAX_VALUE) == 10) {
+                        j2 = Long.MAX_VALUE;
+                    } else {
+                        k.e eVar2 = new k.e();
+                        long j7 = 0;
+                        long min2 = Math.min(32L, eVar.c);
+                        k.u.b(eVar.c, 0, min2);
+                        if (min2 != 0) {
+                            eVar2.c += min2;
+                            o oVar2 = eVar.b;
+                            while (true) {
+                                long j8 = (long) (oVar2.c - oVar2.b);
+                                if (j7 >= j8) {
+                                    j7 -= j8;
+                                    oVar2 = oVar2.f4592f;
+                                }
+                            }
+                            while (min2 > 0) {
+                                o oVar3 = new o(oVar2);
+                                int i3 = (int) (((long) oVar3.b) + j7);
+                                oVar3.b = i3;
+                                oVar3.c = Math.min(i3 + ((int) min2), oVar3.c);
+                                o oVar4 = eVar2.b;
+                                if (oVar4 == null) {
+                                    oVar3.f4593g = oVar3;
+                                    oVar3.f4592f = oVar3;
+                                    eVar2.b = oVar3;
+                                } else {
+                                    oVar4.f4593g.b(oVar3);
+                                }
+                                min2 -= (long) (oVar3.c - oVar3.b);
+                                oVar2 = oVar2.f4592f;
+                                j7 = 0;
+                            }
+                        }
+                        StringBuilder h2 = f.a.a.a.a.h("\\n not found: limit=");
+                        h2.append(Math.min(eVar.c, Long.MAX_VALUE));
+                        h2.append(" content=");
+                        h2.append(eVar2.x().e());
+                        h2.append((char) 8230);
+                        throw new EOFException(h2.toString());
+                    }
+                }
+                return eVar.Q(j2);
+            }
+        }
+        StringBuilder h3 = f.a.a.a.a.h("\\n not found: ");
+        h3.append(eVar.x().e());
+        throw new EOFException(h3.toString());
+    }
+
+    public static c1 z(h.a.k1.p.m.a aVar) {
+        c1 c1Var = Q.get(aVar);
+        if (c1Var != null) {
+            return c1Var;
+        }
+        c1 c1Var2 = c1.f4089h;
+        StringBuilder h2 = f.a.a.a.a.h("Unknown http2 error code: ");
+        h2.append(aVar.b);
+        return c1Var2.g(h2.toString());
+    }
+
+    @Override // h.a.j1.y1
+    public void a(c1 c1Var) {
+        v.a aVar = v.a.PROCESSED;
+        d(c1Var);
+        synchronized (this.f4412j) {
+            Iterator<Map.Entry<Integer, f>> it = this.m.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<Integer, f> next = it.next();
+                it.remove();
+                next.getValue().m.i(c1Var, aVar, false, new n0());
+                r(next.getValue());
+            }
+            Iterator<f> it2 = this.C.iterator();
+            while (it2.hasNext()) {
+                f next2 = it2.next();
+                next2.m.i(c1Var, aVar, true, new n0());
+                r(next2);
+            }
+            this.C.clear();
+            y();
+        }
+    }
+
+    @Override // h.a.k1.b.a
+    public void b(Throwable th) {
+        f.b.a.c.b.o.b.A(th, "failureCause");
+        v(0, h.a.k1.p.m.a.INTERNAL_ERROR, c1.n.f(th));
+    }
+
+    @Override // h.a.c0
+    public d0 c() {
+        return this.f4413k;
+    }
+
+    @Override // h.a.j1.y1
+    public void d(c1 c1Var) {
+        synchronized (this.f4412j) {
+            if (this.t == null) {
+                this.t = c1Var;
+                this.f4409g.d(c1Var);
+                y();
+            }
+        }
+    }
+
+    /* JADX WARN: Finally extract failed */
+    @Override // h.a.j1.y1
+    public Runnable e(y1.a aVar) {
+        q2 q2Var;
+        Runnable dVar;
+        f.b.a.c.b.o.b.A(aVar, "listener");
+        this.f4409g = aVar;
+        if (this.G) {
+            this.E = (ScheduledExecutorService) t2.a(q0.n);
+            j1 j1Var = new j1(new j1.c(this), this.E, this.H, this.I, this.J);
+            this.F = j1Var;
+            synchronized (j1Var) {
+                if (j1Var.f4204d) {
+                    j1Var.b();
+                }
+            }
+        }
+        if (this.a == null) {
+            synchronized (this.f4412j) {
+                b bVar = new b(this, null, null);
+                this.f4410h = bVar;
+                this.f4411i = new n(this, bVar);
+            }
+            q2Var = this.o;
+            dVar = new b();
+        } else {
+            a aVar2 = new a(this.o, this);
+            f fVar = new f();
+            Logger logger = l.a;
+            f.d dVar2 = new f.d(new m(aVar2), true);
+            synchronized (this.f4412j) {
+                b bVar2 = new b(this, dVar2, new h(Level.FINE, g.class));
+                this.f4410h = bVar2;
+                this.f4411i = new n(this, bVar2);
+            }
+            CountDownLatch countDownLatch = new CountDownLatch(1);
+            q2 q2Var2 = this.o;
+            c cVar = new c(countDownLatch, aVar2, fVar);
+            Queue<Runnable> queue = q2Var2.c;
+            f.b.a.c.b.o.b.A(cVar, "'r' must not be null.");
+            queue.add(cVar);
+            q2Var2.c(cVar);
+            try {
+                t();
+                countDownLatch.countDown();
+                q2Var = this.o;
+                dVar = new d();
+            } catch (Throwable th) {
+                countDownLatch.countDown();
+                throw th;
+            }
+        }
+        Queue<Runnable> queue2 = q2Var.c;
+        f.b.a.c.b.o.b.A(dVar, "'r' must not be null.");
+        queue2.add(dVar);
+        q2Var.c(dVar);
+        return null;
+    }
+
+    @Override // h.a.j1.w
+    public void f(w.a aVar, Executor executor) {
+        long j2;
+        Runnable runnable;
+        synchronized (this.f4412j) {
+            boolean z = true;
+            f.b.a.c.b.o.b.F(this.f4410h != null);
+            if (this.w) {
+                w0.a(executor, new v0(aVar, o()));
+                return;
+            }
+            w0 w0Var = this.v;
+            if (w0Var != null) {
+                j2 = 0;
+                z = false;
+            } else {
+                j2 = this.f4406d.nextLong();
+                s sVar = this.f4407e.get();
+                sVar.c();
+                w0 w0Var2 = new w0(j2, sVar);
+                this.v = w0Var2;
+                this.N.f4155e++;
+                w0Var = w0Var2;
+            }
+            if (z) {
+                this.f4410h.z(false, (int) (j2 >>> 32), (int) j2);
+            }
+            synchronized (w0Var) {
+                if (!w0Var.f4338d) {
+                    w0Var.c.put(aVar, executor);
+                    return;
+                }
+                Throwable th = w0Var.f4339e;
+                if (th != null) {
+                    runnable = new v0(aVar, th);
+                } else {
+                    runnable = new u0(aVar, w0Var.f4340f);
+                }
+                w0.a(executor, runnable);
+            }
+        }
+    }
+
+    @Override // h.a.j1.w
+    public h.a.j1.u g(o0 o0Var, n0 n0Var, h.a.c cVar) {
+        w2 w2Var;
+        Object obj;
+        Throwable th;
+        f.b.a.c.b.o.b.A(o0Var, "method");
+        f.b.a.c.b.o.b.A(n0Var, "headers");
+        h.a.a aVar = this.s;
+        w2 w2Var2 = w2.c;
+        List<j.a> list = cVar.f4081g;
+        if (list.isEmpty()) {
+            w2Var = w2.c;
+        } else {
+            h.a.a aVar2 = h.a.a.b;
+            h.a.c cVar2 = h.a.c.f4077k;
+            f.b.a.c.b.o.b.A(aVar, "transportAttrs cannot be null");
+            f.b.a.c.b.o.b.A(cVar, "callOptions cannot be null");
+            j.b bVar = new j.b(aVar, cVar);
+            int size = list.size();
+            f1[] f1VarArr = new f1[size];
+            for (int i2 = 0; i2 < size; i2++) {
+                f1VarArr[i2] = list.get(i2).a(bVar, n0Var);
+            }
+            w2Var = new w2(f1VarArr);
+        }
+        Object obj2 = this.f4412j;
+        synchronized (obj2) {
+            try {
+                obj = obj2;
+                try {
+                    f fVar = new f(o0Var, n0Var, this.f4410h, this, this.f4411i, this.f4412j, this.p, this.f4408f, this.b, this.c, w2Var, this.N, cVar, this.M);
+                    return fVar;
+                } catch (Throwable th2) {
+                    th = th2;
+                    while (true) {
+                        try {
+                            break;
+                        } catch (Throwable th3) {
+                            th = th3;
+                        }
+                    }
+                    throw th;
+                }
+            } catch (Throwable th4) {
+                th = th4;
+                obj = obj2;
+            }
+        }
+    }
+
+    /* JADX WARN: Code restructure failed: missing block: B:11:0x0042, code lost:
+        r17 = r3;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:137:0x0250, code lost:
+        if (r5 != false) goto L_0x0252;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:36:0x0093, code lost:
+        r17 = r3;
+        r16 = r13;
+     */
+    /* JADX WARN: Removed duplicated region for block: B:62:0x00f8  */
+    /* JADX WARN: Removed duplicated region for block: B:80:0x014e  */
+    /* Code decompiled incorrectly, please refer to instructions dump */
+    public final f.e.a.d j(InetSocketAddress inetSocketAddress, String str, String str2) {
+        String str3;
+        String str4;
+        boolean z;
+        InetAddress inetAddress;
+        int i2;
+        int i3;
+        int i4;
+        byte[] bArr;
+        int i5;
+        int i6;
+        int i7;
+        int i8;
+        boolean z2;
+        b.C0138b bVar = new b.C0138b();
+        bVar.a = "https";
+        String hostName = inetSocketAddress.getHostName();
+        if (hostName != null) {
+            int i9 = 0;
+            String c2 = f.e.a.b.c(hostName, 0, hostName.length(), false);
+            if (!c2.startsWith("[") || !c2.endsWith("]")) {
+                str3 = hostName;
+                try {
+                    str4 = IDN.toASCII(c2).toLowerCase(Locale.US);
+                    if (!str4.isEmpty()) {
+                        for (int i10 = 0; i10 < str4.length(); i10++) {
+                            char charAt = str4.charAt(i10);
+                            if (charAt > 31 && charAt < 127 && " #%/:?@[\\]".indexOf(charAt) == -1) {
+                            }
+                            z = true;
+                        }
+                        z = false;
+                    }
+                } catch (IllegalArgumentException unused) {
+                }
+                str4 = null;
+            } else {
+                int length = c2.length() - 1;
+                int i11 = 16;
+                byte[] bArr2 = new byte[16];
+                int i12 = 0;
+                int i13 = 1;
+                int i14 = -1;
+                int i15 = -1;
+                while (true) {
+                    if (i13 >= length) {
+                        str3 = hostName;
+                        break;
+                    }
+                    if (i12 == i11) {
+                        break;
+                    }
+                    int i16 = i13 + 2;
+                    if (i16 <= length) {
+                        i7 = i15;
+                        if (c2.regionMatches(i13, "::", i9, 2)) {
+                            if (i14 != -1) {
+                                break;
+                            }
+                            i12 += 2;
+                            str3 = hostName;
+                            if (i16 == length) {
+                                i14 = i12;
+                                break;
+                            }
+                            i15 = i16;
+                            i14 = i12;
+                            i5 = 0;
+                            i13 = i15;
+                            while (i13 < length) {
+                                int a2 = f.e.a.b.a(c2.charAt(i13));
+                                if (a2 == -1) {
+                                    break;
+                                }
+                                i5 = (i5 << 4) + a2;
+                                i13++;
+                            }
+                            i6 = i13 - i15;
+                            if (i6 != 0 || i6 > 4) {
+                                break;
+                                break;
+                            }
+                            int i17 = i12 + 1;
+                            bArr2[i12] = (byte) ((i5 >>> 8) & 255);
+                            i12 = i17 + 1;
+                            bArr2[i17] = (byte) (i5 & 255);
+                            i9 = 0;
+                            i11 = 16;
+                            hostName = str3;
+                        }
+                    } else {
+                        i7 = i15;
+                    }
+                    if (i12 != 0) {
+                        if (c2.regionMatches(i13, ":", i9, 1)) {
+                            i13++;
+                        } else if (c2.regionMatches(i13, ".", i9, 1)) {
+                            int i18 = i12 - 2;
+                            int i19 = i18;
+                            int i20 = i7;
+                            loop1: while (true) {
+                                if (i20 < length) {
+                                    if (i19 == 16) {
+                                        break;
+                                    }
+                                    if (i19 != i18) {
+                                        if (c2.charAt(i20) != '.') {
+                                            break;
+                                        }
+                                        i20++;
+                                    }
+                                    int i21 = 0;
+                                    int i22 = i20;
+                                    while (true) {
+                                        if (i22 >= length) {
+                                            str3 = hostName;
+                                            i8 = i14;
+                                            break;
+                                        }
+                                        i8 = i14;
+                                        char charAt2 = c2.charAt(i22);
+                                        str3 = hostName;
+                                        if (charAt2 < '0' || charAt2 > '9') {
+                                            break;
+                                        }
+                                        if ((i21 == 0 && i20 != i22) || ((i21 * 10) + charAt2) - 48 > 255) {
+                                            break loop1;
+                                        }
+                                        i22++;
+                                        i14 = i8;
+                                        hostName = str3;
+                                    }
+                                    if (i22 - i20 == 0) {
+                                        break;
+                                    }
+                                    i19++;
+                                    bArr2[i19] = (byte) i21;
+                                    i20 = i22;
+                                    i14 = i8;
+                                    hostName = str3;
+                                } else {
+                                    str3 = hostName;
+                                    i8 = i14;
+                                    if (i19 == i18 + 4) {
+                                        z2 = true;
+                                    }
+                                }
+                            }
+                            z2 = false;
+                            if (z2) {
+                                i12 += 2;
+                                i14 = i8;
+                            }
+                        }
+                    }
+                    str3 = hostName;
+                    i15 = i13;
+                    i14 = i14;
+                    i5 = 0;
+                    i13 = i15;
+                    while (i13 < length) {
+                    }
+                    i6 = i13 - i15;
+                    if (i6 != 0) {
+                        break;
+                    }
+                    int i172 = i12 + 1;
+                    bArr2[i12] = (byte) ((i5 >>> 8) & 255);
+                    i12 = i172 + 1;
+                    bArr2[i172] = (byte) (i5 & 255);
+                    i9 = 0;
+                    i11 = 16;
+                    hostName = str3;
+                }
+                try {
+                    if (i12 != 16) {
+                        if (i14 != -1) {
+                            int i23 = i12 - i14;
+                            System.arraycopy(bArr2, i14, bArr2, 16 - i23, i23);
+                            Arrays.fill(bArr2, i14, (16 - i12) + i14, (byte) 0);
+                        }
+                        i2 = 0;
+                        inetAddress = null;
+                        if (inetAddress != null) {
+                            byte[] address = inetAddress.getAddress();
+                            int i24 = 16;
+                            if (address.length == 16) {
+                                int i25 = 0;
+                                int i26 = 0;
+                                int i27 = -1;
+                                while (i25 < address.length) {
+                                    int i28 = i25;
+                                    while (i28 < i24 && address[i28] == 0 && address[i28 + 1] == 0) {
+                                        i28 += 2;
+                                        i24 = 16;
+                                    }
+                                    int i29 = i28 - i25;
+                                    if (i29 > i26) {
+                                        i27 = i25;
+                                        i26 = i29;
+                                    }
+                                    i25 = i28 + 2;
+                                    i24 = 16;
+                                }
+                                k.e eVar = new k.e();
+                                while (i2 < address.length) {
+                                    if (i2 == i27) {
+                                        eVar.V(58);
+                                        i2 += i26;
+                                        if (i2 == 16) {
+                                            eVar.V(58);
+                                        }
+                                    } else {
+                                        if (i2 > 0) {
+                                            eVar.V(58);
+                                        }
+                                        long j2 = (long) (((address[i2] & 255) << 8) | (address[i2 + 1] & 255));
+                                        if (j2 == 0) {
+                                            eVar.V(48);
+                                            bArr = address;
+                                            i4 = i26;
+                                            i3 = i27;
+                                        } else {
+                                            int numberOfTrailingZeros = (Long.numberOfTrailingZeros(Long.highestOneBit(j2)) / 4) + 1;
+                                            o S2 = eVar.S(numberOfTrailingZeros);
+                                            byte[] bArr3 = S2.a;
+                                            int i30 = S2.c;
+                                            int i31 = (i30 + numberOfTrailingZeros) - 1;
+                                            bArr = address;
+                                            while (i31 >= i30) {
+                                                bArr3[i31] = k.e.f4584d[(int) (j2 & 15)];
+                                                j2 >>>= 4;
+                                                i31--;
+                                                i26 = i26;
+                                                i27 = i27;
+                                            }
+                                            i4 = i26;
+                                            i3 = i27;
+                                            S2.c += numberOfTrailingZeros;
+                                            eVar.c += (long) numberOfTrailingZeros;
+                                        }
+                                        i2 += 2;
+                                        address = bArr;
+                                        i26 = i4;
+                                        i27 = i3;
+                                    }
+                                }
+                                str4 = eVar.L();
+                            } else {
+                                throw new AssertionError();
+                            }
+                        }
+                        str4 = null;
+                    }
+                    inetAddress = InetAddress.getByAddress(bArr2);
+                    if (inetAddress != null) {
+                    }
+                    str4 = null;
+                } catch (UnknownHostException unused2) {
+                    throw new AssertionError();
+                }
+                i2 = 0;
+            }
+            if (str4 != null) {
+                bVar.b = str4;
+                int port = inetSocketAddress.getPort();
+                if (port <= 0 || port > 65535) {
+                    throw new IllegalArgumentException(f.a.a.a.a.u("unexpected port: ", port));
+                }
+                bVar.c = port;
+                if (bVar.a == null) {
+                    throw new IllegalStateException("scheme == null");
+                } else if (bVar.b != null) {
+                    f.e.a.b bVar2 = new f.e.a.b(bVar, null);
+                    d.b bVar3 = new d.b();
+                    bVar3.a = bVar2;
+                    bVar3.a("Host", bVar2.a + ":" + bVar2.b);
+                    bVar3.a("User-Agent", this.c);
+                    if (!(str == null || str2 == null)) {
+                        try {
+                            bVar3.a("Proxy-Authorization", "Basic " + h.f((str + ":" + str2).getBytes("ISO-8859-1")).a());
+                        } catch (UnsupportedEncodingException unused3) {
+                            throw new AssertionError();
+                        }
+                    }
+                    if (bVar3.a != null) {
+                        return new f.e.a.d(bVar3, null);
+                    }
+                    throw new IllegalStateException("url == null");
+                } else {
+                    throw new IllegalStateException("host == null");
+                }
+            } else {
+                throw new IllegalArgumentException(f.a.a.a.a.x("unexpected host: ", str3));
+            }
+        } else {
+            throw new IllegalArgumentException("host == null");
+        }
+    }
+
+    public void k(int i2, c1 c1Var, v.a aVar, boolean z, h.a.k1.p.m.a aVar2, n0 n0Var) {
+        synchronized (this.f4412j) {
+            f remove = this.m.remove(Integer.valueOf(i2));
+            if (remove != null) {
+                if (c1Var != null) {
+                    remove.m.i(c1Var, aVar, z, new n0());
+                }
+                if (!w()) {
+                    y();
+                    r(remove);
+                }
+            }
+        }
+    }
+
+    public f[] l() {
+        f[] fVarArr;
+        synchronized (this.f4412j) {
+            fVarArr = (f[]) this.m.values().toArray(S);
+        }
+        return fVarArr;
+    }
+
+    public String m() {
+        URI a2 = q0.a(this.b);
+        return a2.getHost() != null ? a2.getHost() : this.b;
+    }
+
+    public int n() {
+        URI a2 = q0.a(this.b);
+        return a2.getPort() != -1 ? a2.getPort() : this.a.getPort();
+    }
+
+    public final Throwable o() {
+        synchronized (this.f4412j) {
+            c1 c1Var = this.t;
+            if (c1Var != null) {
+                Objects.requireNonNull(c1Var);
+                return new d1(c1Var);
+            }
+            return new d1(c1.n.g("Connection closed"));
+        }
+    }
+
+    public f p(int i2) {
+        f fVar;
+        synchronized (this.f4412j) {
+            fVar = this.m.get(Integer.valueOf(i2));
+        }
+        return fVar;
+    }
+
+    public boolean q(int i2) {
+        boolean z;
+        synchronized (this.f4412j) {
+            z = true;
+            if (i2 >= this.f4414l || (i2 & 1) != 1) {
+                z = false;
+            }
+        }
+        return z;
+    }
+
+    public final void r(f fVar) {
+        if (this.x && this.C.isEmpty() && this.m.isEmpty()) {
+            this.x = false;
+            j1 j1Var = this.F;
+            if (j1Var != null) {
+                synchronized (j1Var) {
+                    if (!j1Var.f4204d) {
+                        j1.e eVar = j1Var.f4205e;
+                        if (eVar == j1.e.PING_SCHEDULED || eVar == j1.e.PING_DELAYED) {
+                            j1Var.f4205e = j1.e.IDLE;
+                        }
+                        if (j1Var.f4205e == j1.e.PING_SENT) {
+                            j1Var.f4205e = j1.e.IDLE_AND_PING_SENT;
+                        }
+                    }
+                }
+            }
+        }
+        if (fVar.c) {
+            this.O.c(fVar, false);
+        }
+    }
+
+    public void t() {
+        synchronized (this.f4412j) {
+            b bVar = this.f4410h;
+            Objects.requireNonNull(bVar);
+            try {
+                bVar.c.H();
+            } catch (IOException e2) {
+                bVar.b.b(e2);
+            }
+            h.a.k1.p.m.h hVar = new h.a.k1.p.m.h();
+            hVar.b(7, 0, this.f4408f);
+            b bVar2 = this.f4410h;
+            bVar2.f4386d.f(h.a.OUTBOUND, hVar);
+            try {
+                bVar2.c.o(hVar);
+            } catch (IOException e3) {
+                bVar2.b.b(e3);
+            }
+            int i2 = this.f4408f;
+            if (i2 > 65535) {
+                this.f4410h.s(0, (long) (i2 - 65535));
+            }
+        }
+    }
+
+    public String toString() {
+        k u1 = f.b.a.c.b.o.b.u1(this);
+        u1.b("logId", this.f4413k.c);
+        u1.d("address", this.a);
+        return u1.toString();
+    }
+
+    public final void u(f fVar) {
+        if (!this.x) {
+            this.x = true;
+            j1 j1Var = this.F;
+            if (j1Var != null) {
+                j1Var.b();
+            }
+        }
+        if (fVar.c) {
+            this.O.c(fVar, true);
+        }
+    }
+
+    public final void v(int i2, h.a.k1.p.m.a aVar, c1 c1Var) {
+        v.a aVar2 = v.a.REFUSED;
+        synchronized (this.f4412j) {
+            if (this.t == null) {
+                this.t = c1Var;
+                this.f4409g.d(c1Var);
+            }
+            if (aVar != null && !this.u) {
+                this.u = true;
+                this.f4410h.M(0, aVar, new byte[0]);
+            }
+            Iterator<Map.Entry<Integer, f>> it = this.m.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<Integer, f> next = it.next();
+                if (next.getKey().intValue() > i2) {
+                    it.remove();
+                    next.getValue().m.i(c1Var, aVar2, false, new n0());
+                    r(next.getValue());
+                }
+            }
+            Iterator<f> it2 = this.C.iterator();
+            while (it2.hasNext()) {
+                f next2 = it2.next();
+                next2.m.i(c1Var, aVar2, true, new n0());
+                r(next2);
+            }
+            this.C.clear();
+            y();
+        }
+    }
+
+    public final boolean w() {
+        boolean z = false;
+        while (!this.C.isEmpty() && this.m.size() < this.B) {
+            x(this.C.poll());
+            z = true;
+        }
+        return z;
+    }
+
+    public final void x(f fVar) {
+        f.b.a.c.b.o.b.G(fVar.f4405l == -1, "StreamId already assigned");
+        this.m.put(Integer.valueOf(this.f4414l), fVar);
+        u(fVar);
+        f.b bVar = fVar.m;
+        int i2 = this.f4414l;
+        if (f.this.f4405l == -1) {
+            f.this.f4405l = i2;
+            f.b bVar2 = f.this.m;
+            f.b.a.c.b.o.b.F(bVar2.f4123j != null);
+            synchronized (bVar2.c) {
+                f.b.a.c.b.o.b.G(!bVar2.f4160f, "Already allocated");
+                bVar2.f4160f = true;
+            }
+            bVar2.d();
+            c3 c3Var = bVar2.f4158d;
+            c3Var.b++;
+            c3Var.a.a();
+            if (bVar.J) {
+                b bVar3 = bVar.G;
+                f fVar2 = f.this;
+                bVar3.B(fVar2.p, false, fVar2.f4405l, 0, bVar.z);
+                for (f1 f1Var : f.this.f4402i.a) {
+                    Objects.requireNonNull((j) f1Var);
+                }
+                bVar.z = null;
+                if (bVar.A.c > 0) {
+                    bVar.H.a(bVar.B, f.this.f4405l, bVar.A, bVar.C);
+                }
+                bVar.J = false;
+            }
+            o0.c cVar = fVar.f4400g.a;
+            if (!(cVar == o0.c.UNARY || cVar == o0.c.SERVER_STREAMING) || fVar.p) {
+                this.f4410h.flush();
+            }
+            int i3 = this.f4414l;
+            if (i3 >= 2147483645) {
+                this.f4414l = Integer.MAX_VALUE;
+                v(Integer.MAX_VALUE, h.a.k1.p.m.a.NO_ERROR, c1.n.g("Stream ids exhausted"));
+                return;
+            }
+            this.f4414l = i3 + 2;
+            return;
+        }
+        throw new IllegalStateException(t.b("the stream has been started with id %s", Integer.valueOf(i2)));
+    }
+
+    public final void y() {
+        if (this.t != null && this.m.isEmpty() && this.C.isEmpty() && !this.w) {
+            this.w = true;
+            j1 j1Var = this.F;
+            if (j1Var != null) {
+                synchronized (j1Var) {
+                    j1.e eVar = j1Var.f4205e;
+                    j1.e eVar2 = j1.e.DISCONNECTED;
+                    if (eVar != eVar2) {
+                        j1Var.f4205e = eVar2;
+                        ScheduledFuture<?> scheduledFuture = j1Var.f4206f;
+                        if (scheduledFuture != null) {
+                            scheduledFuture.cancel(false);
+                        }
+                        ScheduledFuture<?> scheduledFuture2 = j1Var.f4207g;
+                        if (scheduledFuture2 != null) {
+                            scheduledFuture2.cancel(false);
+                            j1Var.f4207g = null;
+                        }
+                    }
+                }
+                t2.b(q0.n, this.E);
+                this.E = null;
+            }
+            w0 w0Var = this.v;
+            if (w0Var != null) {
+                Throwable o = o();
+                synchronized (w0Var) {
+                    if (!w0Var.f4338d) {
+                        w0Var.f4338d = true;
+                        w0Var.f4339e = o;
+                        Map<w.a, Executor> map = w0Var.c;
+                        w0Var.c = null;
+                        for (Map.Entry<w.a, Executor> entry : map.entrySet()) {
+                            w0.a(entry.getValue(), new v0(entry.getKey(), o));
+                        }
+                    }
+                }
+                this.v = null;
+            }
+            if (!this.u) {
+                this.u = true;
+                this.f4410h.M(0, h.a.k1.p.m.a.NO_ERROR, new byte[0]);
+            }
+            this.f4410h.close();
+        }
+    }
+}
