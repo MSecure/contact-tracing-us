@@ -30,11 +30,10 @@
     - `MainActivity` creates and uses `BluetoothHelper` and `LocationHelper` objects which include code for handling Bluetooth and location state changes, respectively. They include callbacks to be run when Bluetooth or location becomes available or unavailable. The callbacks use a JS module (`RCTDeviceEventEmitter`) to emit a broadcast to indicate that a state change was detected. (In `onCreate` method)
     - `MainActivity` creates and registers two `BroadcastReceiver`s which are configured to handle Bluetooth and location state changes, respectively. (Lines 159, 175)
     - `MainActivity` references the devices' default Bluetooth adapter and location system service, and uses those references to determine if connection capabilities are available. (Lines 160-171, 177-189)
-  - *`MainActivity` creates and uses a `Task` for code pertaining to Bluetooth and location availability detection. Since this task is created in an unprotected activity, it potentially introduces some of the TaskAffinity Ghera vulnerabilities outlined [here](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/ICC/).
-
+  - `MainActivity` creates and uses a `Task` for code pertaining to Bluetooth and location availability detection. Since this task is created in an unprotected activity, it potentially introduces some of the TaskAffinity Ghera vulnerabilities outlined [here](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/ICC/).
+    - A malicious app could exploit this vulnerability by creating an activity in the `Task` created by `MainActivity`. To the user, this malicious activity would appear to be part of the COVID Defense app. This means that the malicious activity could, for example, mimic the appearance of a legitimate COVID Defense activity with fields to collect sensitive information, and use this information with malicious intent.
 - `ExposureNotificationBroadcastReceiver` is protected by a permission, but the protection level of the permission should be checked.
   - This receiver/permission is maintained by Google
-  - TODO: Investigate `com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK` permission
 - `WakeUpService` is protected by a permission, but the protection level of the permission should be checked.
   - `android:permission="com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK"`
   - This permission is part of Google's Exposure Notification API
@@ -43,12 +42,10 @@
   - This permission has signature-level protection. This means that requests to access this service will only be accepted by the system if the requesting application has the same signature as this application.
 - `DiagnosticsReceiver` is protected by a permission, but the protection level of the permission should be checked.
   - `android:permission="android.permission.DUMP"`
-  - From [Android documentation](https://developer.android.com/reference/android/Manifest.permission#DUMP):
-    - Allows an application to retrieve state dump information from system services.
-    - Not for use by third-party applications.
-  - *Based on Android documentation on this permission, use of this permission is not best practice for diagnostics.
+  - This is protected by system ([Android documentation](https://developer.android.com/reference/android/Manifest.permission#DUMP))
 - `InstallReferrerReceiver` is exported and not protected, meaning other apps can access the broadcast receiver.
   - This `BroadcastReceiver` is part of the [Matomo](https://matomo.org) analytics library.
+  - This `BroadcastReceiver` writes to `SharedPreferences` on line 16 of `InstallReferrerReceiver.java`.
 
 ## Code Analysis
 - The app logs information. Sensitive information should never be logged.
@@ -79,7 +76,7 @@
 - Requires a user to enable bluetooth and exposure notifications for the app to function
 - User does not create an account
 - No personally identifiable or location information is collected, stored, or exchanged
-- The COVID Defense App will never collect, track or store your location or GPS information
+- **The COVID Defense App will never collect, track or store your location or GPS information**
 - The following event data may be processed and collected in the COVID Defense App. This data may be shared with other entities.
   - Installing the COVID Defense App
   - Enabling and disabling Exposure Notifications
@@ -90,13 +87,12 @@
   - Deleting the app
 
 ## Privacy Policy Violations
-- The app performs many checks to determine the status of the device's location capabilities. However it seems that the app does not collect or store location information, which is consistent with the privacy policy.
+- The app connects to Location and collects location data without user consent in `AppCompatDelegateImpl.java`.
 
 ## Ghera Vulnerabilities
 - This app uses AES in ECB mode for encryption, which makes it vulnerable to attacks.
   - https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-ECB-InformationExposure-Lean/
 - This app creates a `Task` in an unprotected activity. This makes it potentially vulnerable to TaskAffinity attacks.
   - https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/ICC/
-
 
 
