@@ -1,0 +1,40 @@
+package h.a.j1;
+
+import f.b.a.c.b.o.b;
+import h.a.c1;
+import h.a.j1.v;
+import h.a.n0;
+/* loaded from: classes.dex */
+public final class i0 extends c2 {
+    public boolean b;
+    public final c1 c;
+
+    /* renamed from: d */
+    public final v.a f4199d;
+
+    public i0(c1 c1Var) {
+        v.a aVar = v.a.PROCESSED;
+        b.p(!c1Var.e(), "error must not be OK");
+        this.c = c1Var;
+        this.f4199d = aVar;
+    }
+
+    public i0(c1 c1Var, v.a aVar) {
+        b.p(!c1Var.e(), "error must not be OK");
+        this.c = c1Var;
+        this.f4199d = aVar;
+    }
+
+    @Override // h.a.j1.c2, h.a.j1.u
+    public void i(v vVar) {
+        b.G(!this.b, "already started");
+        this.b = true;
+        vVar.d(this.c, this.f4199d, new n0());
+    }
+
+    @Override // h.a.j1.c2, h.a.j1.u
+    public void k(y0 y0Var) {
+        y0Var.b("error", this.c);
+        y0Var.b("progress", this.f4199d);
+    }
+}

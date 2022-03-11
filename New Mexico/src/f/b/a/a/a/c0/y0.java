@@ -1,0 +1,23 @@
+package f.b.a.a.a.c0;
+
+import com.google.android.apps.exposurenotification.nearby.SmsVerificationWorker;
+import f.b.a.a.a.z.f0;
+import f.b.a.a.a.z.g0;
+import f.b.b.f.a.i;
+import f.b.b.f.a.s;
+import f.b.b.f.a.u;
+import l.b.a.d;
+/* loaded from: classes.dex */
+public final /* synthetic */ class y0 implements i {
+    public static final /* synthetic */ y0 a = new y0();
+
+    @Override // f.b.b.f.a.i
+    public final u a(Object obj) {
+        f0.d dVar = (f0.d) obj;
+        d dVar2 = SmsVerificationWorker.r;
+        if (g0.RATE_LIMITED.equals(dVar.b) || g0.SERVER_ERROR.equals(dVar.b)) {
+            return new s.a(new SmsVerificationWorker.d(null));
+        }
+        return new s.a(new SmsVerificationWorker.b(null));
+    }
+}

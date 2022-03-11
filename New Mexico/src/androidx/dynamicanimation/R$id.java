@@ -1,0 +1,32 @@
+package androidx.dynamicanimation;
+/* loaded from: classes.dex */
+public final class R$id {
+    public static final int action_container = 2131361859;
+    public static final int action_divider = 2131361861;
+    public static final int action_image = 2131361862;
+    public static final int action_text = 2131361868;
+    public static final int actions = 2131361869;
+    public static final int async = 2131361895;
+    public static final int blocking = 2131361905;
+    public static final int chronometer = 2131361943;
+    public static final int forever = 2131362060;
+    public static final int icon = 2131362090;
+    public static final int icon_group = 2131362091;
+    public static final int info = 2131362099;
+    public static final int italic = 2131362102;
+    public static final int line1 = 2131362125;
+    public static final int line3 = 2131362126;
+    public static final int normal = 2131362217;
+    public static final int notification_background = 2131362219;
+    public static final int notification_main_column = 2131362220;
+    public static final int notification_main_column_container = 2131362221;
+    public static final int right_icon = 2131362280;
+    public static final int right_side = 2131362281;
+    public static final int tag_transition_group = 2131362393;
+    public static final int tag_unhandled_key_event_manager = 2131362394;
+    public static final int tag_unhandled_key_listeners = 2131362395;
+    public static final int text = 2131362404;
+    public static final int text2 = 2131362406;
+    public static final int time = 2131362421;
+    public static final int title = 2131362422;
+}

@@ -1,0 +1,33 @@
+package f.b.a.a.a.d0;
+
+import android.net.Uri;
+import e.b.a.m;
+import f.a.b.k;
+import f.a.b.n;
+import f.a.b.p;
+import f.a.b.u;
+import f.b.a.a.a.t.q0.a;
+/* loaded from: classes.dex */
+public class h extends n<byte[]> {
+    public final p.b<byte[]> p;
+
+    public h(Uri uri, p.b<byte[]> bVar, p.a aVar, a aVar2) {
+        super(0, uri.toString(), aVar);
+        this.p = bVar;
+        this.f2173l = true;
+        this.m = new c(aVar2);
+    }
+
+    @Override // f.a.b.n
+    public void b(byte[] bArr) {
+        this.p.a(bArr);
+    }
+
+    @Override // f.a.b.n
+    public p<byte[]> q(k kVar) {
+        if (kVar.a < 400) {
+            return new p<>(kVar.b, m.e.g1(kVar));
+        }
+        return new p<>(new u(kVar));
+    }
+}
