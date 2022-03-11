@@ -34,14 +34,29 @@ This is the Privacy Policy for WA Notify app for Covid Tracing: https://doh.wa.g
 generates codes
 - Phones allows you to delete exposure logs and turn off exposure notifications
 
+## Manifest Analysis:
+- Activity: ``com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity`` is not protected
+  - TODO: need to do more research into if there can be a plausible vulnerability from this 
+- Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
+- Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists 
+  - This broadcast receiver allows the app to dismiss notifications for the appliation by changing the shared preferences as shown in lines 16-19 where the app accordingly changes the shared preference based on if the Intent is a "Notification_Dissmissed_Action_ID".
+  - The lack of a permission to protect the DismissedReceiver allows a malicious app to send Intents that access and change the sharedPreferences of the app
+- Service: ``com.google.android.gms.nearby.exposurenotification.WakeUpService`` is protected by a permission but the permission level should also be checked
+  - permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
+  - The permission backed by the Google Exposure Notification API 
+- Service: ``androidx.work.impl.background.systemjob.SystemJobService`` is protected by a permission but the protection level of the permission should be checked
+  - permission: ``android.permission.BIND_JOB_SERVICE``
+  - This permission is protected by signature level protection where in which the system can only accepted by the system if the requesting app and the current application have the same signature. 
+- Broadcast Receiver: ``androidx.work.impl.diagnostics.DiagnosticsReceiver`` is protected by a permission but the protection level of the permissio should be checked
+  - permission: `android.permission.DUMP`
+
+## Server Locations:
+- Most servers exist within the US except for 2 of them: one exists in Districto Capital de Bogoto, Columbia; Dublin, Ireland; and Noord-Holland, Neatherlands. 
+
 ## Privacy Violation:
 - It says that it doesn't log private info, however according to the report
 it logs sensitive info 
 - Private information like username, password, and keys are hardcoded ~ [False Positive] the file doesn't hardcode any keys, the line in which the error came is this one: StringBuilder j2 = f.a.a.a.a.j("Metadata key=", str4, ", value=");. str4 is a string object that decodes the bytes set from bArr2 using the charset from f.b.b.a.d.a in the line: String str4 = new String(bArr2, f.b.b.a.d.a);. Clearly the inputed value is not any constant from these two lines.  
-
-## Manifest Analysis:
-- Manifest Analysis Exposure Dismissed Receiver is exported and therefore not secure as a Broadcast Receiver, allows for other apps to change settings of apps -> needs to be looked into more
-- The shareDiagnosisActivity is also exported out and not necessarily protected, which allows for other apps and users to access this activity. 
 
 ## Deeper Analysis:
 - This App uses and insecure Number Generator which isn't much of a vulnerability considering that it uses google's random number generator
