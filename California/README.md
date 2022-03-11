@@ -67,14 +67,12 @@ used to identify any system user.
 - Most servers exist within the US except for 2 of them: one exists in Districto Capital de Bogoto, Colombia and another in Maharastra, India. 
 
 ## Privacy Policy Violations:
-- [False Positive] ~~The Privacy Policy says that the app doesn't store private information however after running
-the analysis, it says the app inserts Sensitive Information into a Log File. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#logs)~~ After looking through each file, there were no sensitive information recorded and only String constants were recorded. 
-- [False Positive]~~To protect the keys it keeps changing the key values; however, they use insufficient 
-Random Values making the keys not so protected.(https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04g-Testing-Cryptography.md#weak-random-number-generators)~~ The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
+- [False Positive] ~~The Privacy Policy says that the app doesn't store private information however after running the analysis, it says the app inserts Sensitive Information into a Log File. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#logs)~~ After looking through each file, there were no sensitive information recorded and only String constants were recorded. 
+- The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 - [False Positive]~~retains keys and other sensitive information into its files evnetough it supposed to~~ a string constant was input in the file `h/a/k1/f.java`. 
+- In the `e\b\a\m.java` file, Location is retrieved with the use of ``location.getLatitude()`` and location `location.getLongitude()`; however, in the Privacy Policy, it clearly states that no data regarding location will be collected about their users.
 
 ## Network Vulnerability
-
 - (http used)
 
 ## Ghera Violations:
