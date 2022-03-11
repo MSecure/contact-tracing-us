@@ -54,15 +54,14 @@ generates codes
 - Most servers exist within the US except for 3 of them: one exists in Districto Capital de Bogoto, Columbia; Dublin, Ireland; and Noord-Holland, Neatherlands. 
 
 ## Privacy Violation:
-- It says that it doesn't log private info, however according to the report
-it logs sensitive info 
-- Private information like username, password, and keys are hardcoded ~ [False Positive] the file doesn't hardcode any keys, the line in which the error came is this one: StringBuilder j2 = f.a.a.a.a.j("Metadata key=", str4, ", value=");. str4 is a string object that decodes the bytes set from bArr2 using the charset from f.b.b.a.d.a in the line: String str4 = new String(bArr2, f.b.b.a.d.a);. Clearly the inputed value is not any constant from these two lines.  
+- [False Positive]~~The Privacy Policy says that it doesn't log private info, however according to the reportit logs sensitive info~~ After looking through each file, there were no sensitive information recorded and only String constants were recorded. 
+- [False Positive]~~Private information like username, password, and keys are hardcoded~~ the file doesn't hardcode any keys, the line in which the error came is this one: StringBuilder j2 = f.a.a.a.a.j("Metadata key=", str4, ", value=");. str4 is a string object that decodes the bytes set from bArr2 using the charset from f.b.b.a.d.a in the line: String str4 = new String(bArr2, f.b.b.a.d.a);. Clearly the inputed value is not any constant from these two lines.  
+- The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
+- In the `e\b\a\m.java` file, Location is retrieved with the use of ``location.getLatitude()`` and location `location.getLongitude()`; however, in the Privacy Policy, it clearly states that no data regarding location will be collected about their users.
 
-## Deeper Analysis:
-- This App uses and insecure Number Generator which isn't much of a vulnerability considering that it uses google's random number generator
-- Also, as seen in other apps, there is a server of this app that currently exists within Colombia in the city of the District Capital de Bogota. This a little interesting considering that all the Exposure Notification servers for this app should exist in the US.
+## Network Vulnerability
+- uses HTTP instead of HTTPS when applying code from open source websites such as from `mikepenz.com`, `http://schemas.android.com/apk/res/android`, `http://github.com/google/auto` which can be very susceptible to man-in-the-middle attacks or SQL Injections. 20 websites in total are written in http
 
 ## Ghera Vulnerabilities:
-- App uses SQLite RawQuery so it's vulnerable to code injection ~ [False Positive] in each file where an SQL query is done, the SQL query never inputs a static string to which it uses for a SQL query to allow an SQL injection.
-- app creates temp file by using the method createNewTempFile() should not store info
-into this file should say createNewFile() method instead ~ [False Positive] deletes file after creation.
+- [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. [TODO: look into ths and what it might be]
+
