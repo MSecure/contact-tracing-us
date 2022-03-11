@@ -19,7 +19,7 @@ This information also exists in the MobSF pdf of the app as well as the apk_hash
 
 ## WA Privacy Policy:
 This is the Privacy Policy for WA Notify app for Covid Tracing: https://doh.wa.gov/emergencies/covid-19/wa-notify/privacy-policy
-- containing data elements that can't be used to detect an individual
+- containing data elements that can't be used to detect an individual	
 	- Random Codes: these hashed codes are stored 14 days and then 
 	  shared via bluetooth to check for possible exposure.
 	- Verification Link: pops up after given verification code once 
