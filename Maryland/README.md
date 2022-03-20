@@ -23,8 +23,8 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 - They collect data but only in certain circumstances:
   - a lot of data can be chosen to be collected by the user; however there are some data we collect via automated means
   - They collect information that correspond to once location regarding where they live so they can provide services; however they do not gather the information from constant location tracking
-    - This information is often times very contradictory as shown when it said this line, "We may collect location information (such as an address or postal code) to provide location-based Services" followed by "We do not ask for, nor do we collect, location information from you through your device". This clearly shows a lack of coherence in their own privacy policy which is a vulnerability within itself.
-  - Wherever legally permissable, they will track data regarding the use of third party applications
+  - Wherever legally permissable, they will track data regarding the use of third party 
+  - [Vulnerability] This information is often times very contradictory as shown when it said this line, "We may collect location information (such as an address or postal code) to provide location-based Services" followed by "We do not ask for, nor do we collect, location information from you through your device". This clearly shows a lack of coherence in their own privacy policy which is a vulnerability within itself.
 - They store information based on what you gave them such as address, phone number, information about symptoms, etc. 
 - They also store information regarding tech phone calls or conversations you had with them in the past 
 - They use the Security Socket Layers given from when you sign in to encrypt transmission of data and information
