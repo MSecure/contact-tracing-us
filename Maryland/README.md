@@ -52,6 +52,7 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 
 ## Privacy Violation:
 - The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
+- In `e/b/a/m.java`, they call function such as getLongitude and getLatitude which retrieves location data to be used throughout the app (privacy policy contradicts itself whether it retrieves location data or not). 
 
 ## Network Vulnerability
 - uses HTTP instead of HTTPS when applying code from open source websites such as from `mikepenz.com`, `http://schemas.android.com/apk/res/android`, `http://github.com/google/auto` which can be very susceptible to man-in-the-middle attacks or SQL Injections. 20 websites in total are written in http
