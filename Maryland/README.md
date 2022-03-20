@@ -23,6 +23,7 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 - They collect data but only in certain circumstances:
   - a lot of data can be chosen to be collected by the user; however there are some data we collect via automated means
   - They collect information that correspond to once location regarding where they live so they can provide services; however they do not gather the information from constant location tracking
+    - This information is often times very contradictory as shown when it said this line, "We may collect location information (such as an address or postal code) to provide location-based Services" followed by "We do not ask for, nor do we collect, location information from you through your device". This clearly shows a lack of coherence in their own privacy policy which is a vulnerability within itself.
   - Wherever legally permissable, they will track data regarding the use of third party applications
 - They store information based on what you gave them such as address, phone number, information about symptoms, etc. 
 - They also store information regarding tech phone calls or conversations you had with them in the past 
@@ -31,7 +32,7 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 - Privacy Policy contracdiction when retrieving Location..
 
 ## Manifest Analysis:
-- Activity-Alias: `om.google.android.apps.exposurenotification.ENNotifyOthers` is not protected:
+- Activity-Alias: `com.google.android.apps.exposurenotification.ENNotifyOthers` is not protected:
   - [TODO]
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists 
