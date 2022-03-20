@@ -32,6 +32,7 @@ This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/D
 
 ## Manifest Analysis:
 - Activity-Alias: `com.google.android.apps.exposurenotification.ENNotifyOthers` is not protected:
+  - Works like "wrapper activity" for its targetActivity which is `com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity`
   - [TODO]
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists 
