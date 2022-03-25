@@ -4,7 +4,7 @@
 This information also exists in the MobSF pdf of the app as well as the apk_hash.txt file. 
 ```
   APK Signature:
-  MD%: 0c91c6d718ac6f2b71ab183d26a42d6d
+  MD5: 0c91c6d718ac6f2b71ab183d26a42d6d
   SHA-1: 5c6799da2ba27769a0dd4be60fc2af85002ef616
   SHA-256: ad11797f06bf933b7d436f0ff633b3a083fa173b329278542c8acd4d77bbe94a
 ```
@@ -25,8 +25,7 @@ Users may turn the system on or off at any time, or uninstall the app on an Andr
 The system does not collect, track or store users’ location, GPS information, or personal 
 information.
 
-## This is the Privacy Policy for CA Notify app for Covid Tracing: 
-### https://canotify.ca.gov/privacy/
+This is the Privacy Policy for CA Notify app for Covid Tracing: https://canotify.ca.gov/privacy/
 
 - only data used are the anonymous keys, Bluetooth signal strength, and date and duration of
 exposure
@@ -76,7 +75,7 @@ used to identify any system user.
 - uses HTTP instead of HTTPS when applying code from open source websites such as from `mikepenz.com`, `http://schemas.android.com/apk/res/android`, or `http://github.com/google/auto` which can be very susceptible to man-in-the-middle attacks or SQL Injections.
 
 ## Ghera Violations:
-.- [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. 
+- [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. 
 
 
 
