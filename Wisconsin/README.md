@@ -40,4 +40,8 @@ This is the Privacy Policy for WI Exposure Notification app for Covid Tracing: h
 - Intended for people 18 years or older
 - There will be constant changes to the privacy policy over time, so whenever a change is made all users will be notified readily
 
+## Manifest Analysis
+
+
+
 
