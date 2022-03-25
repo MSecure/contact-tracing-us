@@ -43,8 +43,7 @@
     - `android:permission="android.permission.DUMP"`
     - This is protected by system ([Android documentation](https://developer.android.com/reference/android/Manifest.permission#DUMP))
 - `AssetPackExtractionService` is not Protected
-    - This service is accessible to any other application on the device.
-    - TODO
+    - This service is provided by Google as part of the Android API.
 
 ## Code Analysis
 - App uses SQLite Database and execute raw SQL query. Untrusted user input in raw SQL queries can cause SQL Injection. Also sensitive information should be encrypted and written to the database
@@ -59,13 +58,15 @@
     - In `f/b/a/f/a/b/b2.java`, this app access the file located at the path returned by `getExternalFilesDir(null)`.
     - This app does not include the `android:name="android.permission.WRITE_EXTERNAL_STORAGE"` permission in the manifest. This means that the user is not directly notified that the application is accessing external storage.
 - Files may contain hardcoded sensitive information like usernames, passwords, keys etc.
-    - The relevant lines of code (174 in `h/a/k1/f.java`) are never executed - they are in an `else` block for which the corresponding `if` condition is always `true`.
+    - The relevant lines of risky code (174 in `h/a/k1/f.java`) are never executed - they are in an `else` block for which the corresponding `if` condition is always `true`.
         - ``z  = true;``
     ``if(z){...} else { [Log "Metadata Key"] }``
+        - Best practice would be to remove this code if it is not used.
 - The App uses the encryption mode CBC with PKCS5/PKCS7 padding. This configuration is vulnerable to padding oracle attacks.
-    - Information encrypted with this cipher may be leaked, as described by [this Ghera vulnerability](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/).
+    - [This Ghera vulnerability](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/) relates to encryption with a non-random initialization vector. This instance is initialized with the "androidxBiometric" key from the KeyStore. In addition, since this encryption mode uses padding, it is vulnerable to [padding oracle attacks](https://en.wikipedia.org/wiki/Padding_oracle_attack) using the Android `BadPaddingException` as the padding oracle.
 - App creates temp file. Sensitive information should never be written into a temp file. 
     - `e/v/k.c()` creates a temp file (`room-copy-helper`) and uses an input stream from context assets to obtain bytes to write to that file.
+    - [False positive] This is not a security issue. The file is stored in app-level internal storage as a temporary cache file (directory from `getCacheDir()`).
   
 ## Web Analysis
 - This app has at least ten servers located in the United States.
@@ -85,6 +86,7 @@
 
 ## Privacy Policy Violations
 - This app includes code for collecting location/GPS information, which is in violation of the app's privacy policy. (`e/b/a/m.java`)
+- This app includes code for collecting and handling biometrics information.
 
 ## Ghera Vulnerabilities
 - The app uses CBC mode for encryption.

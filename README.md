@@ -22,7 +22,7 @@ List of Apps covered in this project:
 |USA - Connecticut	|gov.ct.covid19.exposurenotifications|✔️
 |USA - Delaware	|gov.de.covidtracker | ✔️
 |USA - District of Columbia	|gov.dc.covid19.exposurenotifications | ✔️
-|USA - Guam	|org.pathcheck.guam.bt | 🚧
+|USA - Guam	|org.pathcheck.guam.bt | ✔️
 |USA - Hawaii	|org.alohasafe.alert | ✔️
 |USA - Louisiana	|org.pathcheck.la.bt | 🚧
 |USA - Maryland	|gov.md.covid19.exposurenotifications | ❌
