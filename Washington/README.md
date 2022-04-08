@@ -63,7 +63,7 @@ generates codes
 - uses HTTP instead of HTTPS when applying code from open source websites such as from `mikepenz.com`, `http://schemas.android.com/apk/res/android`, `http://github.com/google/auto` which can be very susceptible to man-in-the-middle attacks or SQL Injections. 20 websites in total are written in http
 
 ## Code Vulernabilities:
-- In `f/b/c/k/t.w0.java`, the method a(Object obj) throw a Throwable object th, but the Throwable object was never initialized and it's thrown after the return statement ~ redundant code
+- ~~In `f/b/c/k/t.w0.java`, the method a(Object obj) throw a Throwable object th, but the Throwable object was never initialized and it's thrown after the return statement ~ redundant code~~ [MobSF error in reverse engineering code]
 
 ## Ghera Vulnerabilities:
 - [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. [TODO: look into ths and what it might be]
