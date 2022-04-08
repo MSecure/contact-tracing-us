@@ -24,14 +24,14 @@ SHA256: 94edd44dd7e7e99cd271d827abc5658930557f20ecca3b16f8e5a978da18bbbf
   - android.permission.FOREGROUND_SERVICE
   - full Internet access (android.permission.INTERNET)
   - automatically start at boot (android.permission.RECEIVE_BOOT_COMPLETED)
-  - Allows an app to use device supported biometric modalities.(android.permission.USE_BIOMETRIC)
-  - allow use of fingerprint(android.permission.USE_FINGERPRINT)
+  - allows an app to use device supported biometric modalities.(android.permission.USE_BIOMETRIC)
+  - allow use of fingerprint (android.permission.USE_FINGERPRINT)
   - prevent phone from sleeping (android.permission.WAKE_LOCK)
 
 ### MANIFEST ANALYSIS
  - Application Data can be Backed up. [android:allowBackup=true]. This flag allows anyone to backup your application data via adb. It allows users who have enabled USB debugging to copy application data off of the device.
  - Broadcast Receiver
-   - [False Positive]. The permission is maintained by the Google API used.
+   - [*False Positive*]. The permission is maintained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
@@ -41,7 +41,7 @@ SHA256: 94edd44dd7e7e99cd271d827abc5658930557f20ecca3b16f8e5a978da18bbbf
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
     - [False Positive] bacause these two permission are only used by Android System; and we assume that the system is not malicious.
-    - [Possible False Positive] com.google.android.play.core.assetpacks.AssetPackExtractionService
+    - [False Positive] com.google.android.play.core.assetpacks.AssetPackExtractionService. This is added by Google automatically.
 
 
  
@@ -60,16 +60,15 @@ Therefore, this is clearly a violation of the privacy policy made on the app off
 
 [*Following-up*] Later I found that this is similiar to the case in CO, that this funtion is implementing an isNight() function from TwilightManager. Please check the `Privacy Violations` secton in README from `Covid Alert Co` folder for more details.
 
-Also the app uses Biometric. android.permission.USE_BIOMETRIC and android.permission.USE_FINGERPRINT.
+Also the app uses Biometric. android.permission since they declared USE_BIOMETRIC and android.permission.USE_FINGERPRINT in the Manifest file. In the privacy policy of the app, there is no mention of this information to be collected as well. Therefore, this is also a violation of the privacy policy.
 
 ### CODE ANALYSIS
-- The App uses an insecure Random Number Generator `java.util.Random`.
-- The App uses the encryption mode CBC with PKCS5/PKCS7 padding. This configuration is vulnerable to padding oracle attacks.
-- [False Positive] ~~The App logs information. Sensitive information should never be logged~~. No suspicous sensitive information found to be logged.
+- The App uses an insecure Random Number Generator `java.util.Random`. They should use `java.security.SecureRandom` instead.
+- The App uses the encryption mode CBC with PKCS5/PKCS7 padding. This configuration is vulnerable to padding oracle attacks. In the [Android developer website](https://developer.android.com/guide/topics/security/cryptography#bc-algorithms), it also mentions that `AES/CBC/PKCS7PADDING` is deprecated and should no longer be used in your app.
+- [*False Positive*] ~~The App logs information. Sensitive information should never be logged~~. No suspicous sensitive information found to be logged.
 - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
-- [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
-  
-- [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~
+- [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~ No possible vulnerability of SQL injection found.
+- [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~ The temp files are deleted on exit.
 
 
 
