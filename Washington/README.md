@@ -16,6 +16,8 @@ This information also exists in the MobSF pdf of the app as well as the apk_hash
 - Internet Access: ``<android.permission.INTERNET/>``
 - Recieve Boot Completed: ``<android.permission.RECEIVE_BOOT_COMPLETED/>``
 - Wake Lock: ``<android.permission.WAKE_LOCK/>``
+- Biometric: `<android.permission.USE_BIOMETRIC/>`
+- Finger Print: `<android.permission.USE_FINGERPRINT/>`
 
 ## WA Privacy Policy:
 This is the Privacy Policy for WA Notify app for Covid Tracing: https://doh.wa.gov/emergencies/covid-19/wa-notify/privacy-policy
