@@ -45,7 +45,7 @@ generates codes
   - permission: `com.google.android.c2dm.permission.SEND`
 
 ## Privacy Violations:
-- it discloses the ip address in 6 of the files in the code which clearly violates its policy of not sharing private information.
+- ~~it discloses the ip address in 6 of the files in the code which clearly violates its policy of not sharing private information.~~[False Positive] Inputed constants
 - The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 - In `androidx/appcompat/app/k.java`, Location is retrieved with the use of ``location.getLatitude()`` and location `location.getLongitude()`; however, in the Privacy Policy, it clearly states that no data regarding location will be collected about their users as part of the TwilightManager
 
