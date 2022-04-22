@@ -47,7 +47,6 @@ generates codes
 - Broadcast Receiver: `com.google.android.apps.exposurenotification.nearby.SmsVerificationBroadcastReceiver` is protected by a permission but the protection level to the permission should be checked
   - permission: `com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK`
 - Service: `com.google.android.play.core.assetpacks.AssetPackExtractionService` is not protected and is exported leaving accessible to other apps on the device
-- 
 
 ## Server Locations:
 - Most servers exist within the US except for 3 of them: one exists in Districto Capital de Bogoto, Columbia; Dublin, Ireland; and Noord-Holland, Neatherlands. 
