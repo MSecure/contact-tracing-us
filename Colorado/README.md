@@ -35,9 +35,12 @@ SHA256: ba31125e4944b02b3eaec267e5bc890940f0d91c03e1a098fa0f83b57e436fd5
    - User Guide: https://developers.google.com/android/exposure-notifications/implementation-guide
    - Glossary: https://developers.google.com/android/exposure-notifications/exposure-notifications-api#glossary
  - Service 
-    - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
-    - Permission: android.permission.DUMP[android:exported=true]
-    - These two are possibly false positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+    - Permissions
+      - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
+      - Permission: android.permission.DUMP[android:exported=true]
+      - These two are possibly false positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+    - `com.google.android.play.core.assetpacks.AssetPackExtractionService` is not Protected
+      - This service is provided by Google as part of the Android API.
 
 
  
@@ -54,9 +57,10 @@ The app says no location info collected, but it has the function to find the loc
 
 Therefore, this is clearly a violation of the privacy policy made on the app official website.
 
-
 ~~Although this function might be just a Twilight Manager that uses location to calculate the sun rise/down time.~~
 Method `c()` is found to have a high degree of resemblance to method `getLastKnowLocation()` and `updateState()` in `androidx\appcompat\app\TwilightManager.java` from `Covid Alert ND & WY_v1.2 `. It is believed that method `c()` is implementing a self-difined `isNight()`, although the reason why they would need this method remains unknown. Yet the app has never the less violating the privacy policy by accessing location of the user in method `c()`. See the code comparison in `comparison.md` under this folder.
+
+In addition, this app includes code for collecting and handling biometrics information, for example in `e/d/w.java`.
 
 ### CODE ANALYSIS
 - The App uses an insecure Random Number Generator, java.util.Random. This should be replaced by java.secure.SecureRandom.
@@ -66,6 +70,11 @@ Method `c()` is found to have a high degree of resemblance to method `getLastKno
     h/a/j1/n2.java
     h/a/n1/a.java
 - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
+- App can read/write to External Storage. Any App can read data written to External Storage.
+    - In `f/b/a/f/a/b/b2.java`, this app access the file located at the path returned by `getExternalFilesDir(null)`.
+    - This app does not include the `android:name="android.permission.WRITE_EXTERNAL_STORAGE"` permission in the manifest. This means that the user is not directly notified that the application is accessing external storage.
+- The app uses the encryption mode CBC with PKCS5/PKCS7 padding. This configuration is vulnerable to padding oracle attacks.
+  - [This Ghera vulnerability](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/) relates to encryption with a non-random initialization vector. This instance is initialized with the "androidxBiometric" key from the KeyStore. In addition, since this encryption mode uses padding, it is vulnerable to [padding oracle attacks](https://en.wikipedia.org/wiki/Padding_oracle_attack) using the Android `BadPaddingException` as the padding oracle.
 <!-- - [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
   - In `b/s/f.java`, when there is a `execSQL()`, the functions only take in an int and SQLiteDatabase; since we can't do any SQL injection with an int as input, this rawSQL seems to be safe. There is another variable `f2464b` contained an array of Strings. After manually checked all the places that uses this f class:
   ```
@@ -82,7 +91,7 @@ Method `c()` is found to have a high degree of resemblance to method `getLastKno
 
 
 ### SERVER LOCATIONS
-No suspicious servers or suspicious location of servers find here.
+- This app has one server located in the Netherlands, and one located in Columbia. The reason for servers located in these regions is unclear.
 
 ### URL
 Lots of http URLs found in the app. Most of them are android/google sites or other open source websites. This might leak some info when requesting, but it won't cause any later leaking in a normal setting, because the servers forces HTTPS on server's end after manually testing. For a full list of the HTTP URLs, please check the URL section `CO_MobSF_report.pdf`.
