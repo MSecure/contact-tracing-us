@@ -66,7 +66,6 @@ used to identify any system user.
 
 ## Privacy Policy Violations:
 - [False Positive] ~~The Privacy Policy says that the app doesn't store private information however after running the analysis, it says the app inserts Sensitive Information into a Log File. (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#logs)~~ After looking through each file, there were no sensitive information recorded and only String constants were recorded. 
-- The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 - [False Positive]~~retains keys and other sensitive information into its files evnetough it supposed to~~ a string constant was input in the file `h/a/k1/f.java`. 
 - In the `e\b\a\m.java` file, Location is retrieved with the use of ``location.getLatitude()`` and location `location.getLongitude()`; however, in the Privacy Policy, it clearly states that no data regarding location will be collected about their users.
 
@@ -81,4 +80,5 @@ used to identify any system user.
 - In file ``e/d/w.java`` line 37, the app uses CBC encryption mode with PKCS5/PKCS7 padding which can be vulnerable to padding oracle attacks. Also, `AES/CBC/PKCS7PADDING` is considered to be deprecated and should no longer be used according to [Android developer website](https://developer.android.com/guide/topics/security/cryptography#bc-algorithms)
 - In file `f/b/a/f/a/b/b2.java` line 44, the app writes to external storage which can lead to other apps or hackers accessing that information on the device.
   - The file being called from external storage is being called in this line `b2.getExternalFilesDir(null)`
+- The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 
