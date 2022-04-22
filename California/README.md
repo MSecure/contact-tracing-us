@@ -16,6 +16,8 @@ This information also exists in the MobSF pdf of the app as well as the apk_hash
 - Internet Access: ``<android.permission.INTERNET/>``
 - Recieve Boot Completed: ``<android.permission.RECEIVE_BOOT_COMPLETED/>``
 - Wake Lock: ``<android.permission.WAKE_LOCK/>``
+- Biometric: `<android.permission.USE_BIOMETRIC/>`
+- Finger Print: `<android.permission.USE_FINGERPRINT/>`
 
 ## Privacy Policy:
 CA Notify has the potential to help stop the spread of the infection and its use is 
@@ -46,13 +48,7 @@ information.
 used to identify any system user.
 
 ## Manifest Analysis
-- Activity: ``com.google.android.apps.exposurenotification.notify.ShareDiagnosisActivity`` is not protected
-  - On line 41 in SharedDiagnosisActivity.java file, in the onActivityResult method it creates a bundle to allow it to share data amongst other activities in the application
-  - TODO: need to do more research into if there can be a plausible vulnerability from this 
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
-- Broadcast Receiver: ``com.google.android.apps.exposurenotification.common.ExposureNotificationDismissedReceiver`` is not protected, an intent filter exists 
-  - This broadcast receiver allows the app to dismiss notifications for the appliation by changing the shared preferences as shown in lines 16-19 where the app accordingly changes the shared preference based on if the Intent is a "Notification_Dissmissed_Action_ID".
-  - The lack of a permission to protect the DismissedReceiver allows a malicious app to send Intents that access and change the sharedPreferences of the app
 - Service: ``com.google.android.gms.nearby.exposurenotification.WakeUpService`` is protected by a permission but the permission level should also be checked
   - permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
   - The permission backed by the Google Exposure Notification API 
@@ -61,6 +57,9 @@ used to identify any system user.
   - This permission is protected by signature level protection where in which the system can only accepted by the system if the requesting app and the current application have the same signature. 
 - Broadcast Receiver: ``androidx.work.impl.diagnostics.DiagnosticsReceiver`` is protected by a permission but the protection level of the permissio should be checked
   - permission: `android.permission.DUMP`
+- Service: `com.google.android.play.core.assetpacks.AssetPackExtractionService` is not protected and is exported leaving accessible to other apps on the device
+- Broadcast Receiver: `com.google.android.apps.exposurenotification.nearby.SmsVerificationBroadcastReceiver` is protected by a permission but the protection level to the permission should be checked
+  - permission: `com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK`
 
 ## Server Locations:
 - Most servers exist within the US except for 2 of them: one exists in Districto Capital de Bogoto, Colombia and another in Maharastra, India. 
@@ -76,9 +75,10 @@ used to identify any system user.
 
 ## Ghera Violations:
 - [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. 
+- [The app uses CBC mode for encryption](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/)
 
-
-
-
- 
+## Code Analysis:
+- In file ``e/d/w.java`` line 37, the app uses CBC encryption mode with PKCS5/PKCS7 padding which can be vulnerable to padding oracle attacks. Also, `AES/CBC/PKCS7PADDING` is considered to be deprecated and should no longer be used according to [Android developer website](https://developer.android.com/guide/topics/security/cryptography#bc-algorithms)
+- In file `f/b/a/f/a/b/b2.java` line 44, the app writes to external storage which can lead to other apps or hackers accessing that information on the device.
+  - The file being called from external storage is being called in this line `b2.getExternalFilesDir(null)`
 
