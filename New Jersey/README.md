@@ -42,8 +42,34 @@ App.
 
 https://www.nj.gov/health/documents/DPP_COVIDALERTNJ.pdf
 
-### Privacy Violations
+### MANIFEST ANALYSIS
+ - Broadcast Receiver
+   - com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver.
+     False Positive? An intent-filter exists. RNDeviceReceiver() no longer existed. With intents sent by adb, it seems like it's secured now.
 
+   - False Positive. The permission is maintained by the Google API used.
+   - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
+   [android:exported=true]
+   - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
+   - User Guide: https://developers.google.com/android/exposure-notifications/implementation-guide
+   - Glossary: https://developers.google.com/android/exposure-notifications/exposure-notifications-api#glossary
+
+ - Service 
+    -  com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
+    [android:exported=true]
+    - com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE [android:exported=true] This is maintained by Google.
+    - android.permission.BIND_JOB_SERVICE[android:exported=true] 
+    - android.permission.DUMP[android:exported=true]
+    - False positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+
+
+### CODE ANALYSIS
+- The App uses an insecure Random Number Generator, java.util.Random. This should be replaced by java.secure.SecureRandom instead.
+- [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
+- IP Address disclosure?
+- [*False Positive*] ~~	App uses SQLite Database and execute raw SQL query. Untrusted user input in raw SQL queries can cause SQL Injection. Also sensitive information should be encrypted and written to the database.~~
+- App can read/write to External Storage. Any App can read data written to External Storage. ` Environment.getExternalStorageDirectory()` to create new file in obb folder `h/a/a/a/a/a.java`. An . obb file is an expansion file used by some Android apps distributed using the Google Play store. It contains data not stored in the application’s main package (. APK file), such as graphics, media files, and other large program assets. 
+Source: https://frameboxxindore.com/windows/what-is-obb-folder-in-android.html
 - Uses the vulnerable SHA-1 hash function which should be replaced with a more secure SHA-256 hash
 - Accessing websites which use or direct to HTTP connections, which are outdated compared to the more secure HTTPS connections
 - Reads/writes to external storage, leaving it vulnerable to data injection

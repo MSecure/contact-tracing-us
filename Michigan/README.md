@@ -1,12 +1,3 @@
-<!-- # Instuction from slack
-When you analyze an app, don't have to write the report straightaway. Note the following:
-1. What permissions are being used
-2. What features of the device the app is using (e.g., storage, Bluetooth, location, etc.)
-3. What is the app's privacy policy.
-4. Is the app violating its own privacy policy. How?
-
-For each app, keep a note of these points. At the end of the semester you should compile them in a report.  -->
-
 # Covid Alert MI Analysis (Minqi) 
 ### APK Basic Info
 App: MI COVID Alert_1.4. The report from MobSF, ```MI_MobSF_report.pdf```, is also inside this folder. 
@@ -80,13 +71,6 @@ Therefore, this is clearly a violation of the privacy policy made on the app off
   - In `b/s/l.java`, the function `public final void a(File file)` uses the temp file to store the input `file`. This function is called in `b\s\l.java` function `public final void b()` to copy database file.
   - In both case, the temperary files are deleted after use.
 
-
-<!-- ### Crypto files
-```
-c/b/c/a/m0/d.java ECB and CTR used
-c/b/c/a/m0/a.java ECB used here
-c/b/c/a/m0/g.java CTR mode
-``` -->
 
 ### SERVER LOCATIONS
 No suspicious servers or suspicious location of servers find here.

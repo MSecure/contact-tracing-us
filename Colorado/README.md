@@ -66,18 +66,6 @@ Method `c()` is found to have a high degree of resemblance to method `getLastKno
     h/a/j1/n2.java
     h/a/n1/a.java
 - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
-<!-- - [*False Positive*]~~App uses SQLite Database and execute raw SQL query.~~
-  - In `b/s/f.java`, when there is a `execSQL()`, the functions only take in an int and SQLiteDatabase; since we can't do any SQL injection with an int as input, this rawSQL seems to be safe. There is another variable `f2464b` contained an array of Strings. After manually checked all the places that uses this f class:
-  ```
-  .\gov\michigan\MiCovidExposure\storage\ExposureNotificationDatabase_Impl.java
-  .\androidx\work\impl\WorkDatabase_Impl.java
-  ```
-  The input string array used in both file is hardcoded and then passed to `f2464b`; therefore, this variable should be safe from any injection as well. -->
-<!-- - [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~
-  - In `b/q/d.java`, the function `public static void a(ZipFile zipFile, ZipEntry zipEntry, File file, String str)` creates the temp file to temperarely store the data from ZipFile input stream.
-  - In `b/s/l.java`, the function `public final void a(File file)` uses the temp file to store the input `file`. This function is called in `b\s\l.java` function `public final void b()` to copy database file.
-  - In both case, the temperary files are deleted after use. -->
-
 
 
 
