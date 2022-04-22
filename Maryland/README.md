@@ -16,6 +16,8 @@ This information also exists in the MobSF pdf of the app as well as the apk_hash
 - Internet Access: ``<android.permission.INTERNET/>``
 - Recieve Boot Completed: ``<android.permission.RECEIVE_BOOT_COMPLETED/>``
 - Wake Lock: ``<android.permission.WAKE_LOCK/>``
+- Biometric: `<android.permission.USE_BIOMETRIC/>`
+- Finger Print: `<android.permission.USE_FINGERPRINT/>`
 
 ## Privacy Policy:
 This is the privacy policy of MD Covid Alert: https://health.maryland.gov/phpa/Documents/COVID%20Link%20Privacy%20Policy%20(for%20Short%20Code)%20-%20FINAL.pdf
