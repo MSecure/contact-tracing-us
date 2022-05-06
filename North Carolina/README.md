@@ -28,7 +28,7 @@ SHA256: 683b42f6e5a708c48e1b708e81549511d2803654e82a92301f3b7072d7fbfd40
 
 ### MANIFEST ANALYSIS
  - Broadcast Receiver
-   - False Positive. The permission is mained by the Google API used.
+   - False Positive. The permission is maintained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 

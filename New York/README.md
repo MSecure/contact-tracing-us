@@ -33,9 +33,6 @@ From Android Manifest.xml:
 
     <uses-permission
         android:name="android.permission.VIBRATE" />
-
-    <uses-permission
-        android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 + Bluetooth
 + Internet
 + Access Network State
@@ -44,8 +41,6 @@ From Android Manifest.xml:
 + Foreground Service
 Foreground services show a status bar notification, so that users are actively aware that your app is performing a task in the foreground and is consuming system resources. The notification cannot be dismissed unless the service is either stopped or removed from the foreground.
 + Vibrate
-+ BIND_GET_INSTALL_REFERRER_SERVICE
-Used by Firebase (a platform developed by Google for creating mobile and web applications) to recognize where the app was installed from.
 - No Location
 
 ### Privacy Policy:
@@ -65,3 +60,34 @@ The representative will ask you if you're willing to share your app's list of cl
 Each day, every phone that has the app compares its own list of close contact codes to the list of "infected" codes. If there's a match, the app will display a COVID alert.
 
 https://coronavirus.health.ny.gov/covidalert-privacy/
+
+
+### MANIFEST ANALYSIS
+ - Broadcast Receiver
+   - com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver.
+     False Positive? An intent-filter exists. RNDeviceReceiver() no longer existed. With intents sent by adb, it seems like it's secured now.
+
+   - False Positive. The permission is maintained by the Google API used.
+   - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
+   [android:exported=true]
+   - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
+   - User Guide: https://developers.google.com/android/exposure-notifications/implementation-guide
+   - Glossary: https://developers.google.com/android/exposure-notifications/exposure-notifications-api#glossary
+
+ - Service 
+    -  com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
+    [android:exported=true]
+    - com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE [android:exported=true] This is maintained by Google.
+    - android.permission.BIND_JOB_SERVICE[android:exported=true] 
+    - android.permission.DUMP[android:exported=true]
+    - False positive bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+
+
+### CODE ANALYSIS
+- The App uses an insecure Random Number Generator, java.util.Random. This should be replaced by java.secure.SecureRandom instead.
+- [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
+- IP Address disclosure?
+- [*False Positive*] ~~	App uses SQLite Database and execute raw SQL query. Untrusted user input in raw SQL queries can cause SQL Injection. Also sensitive information should be encrypted and written to the database.~~
+- App can read/write to External Storage. Any App can read data written to External Storage. ` Environment.getExternalStorageDirectory()`
+- SHA-1 is a weak hash known to have hash collisions.
+

@@ -32,7 +32,7 @@ SHA256: ba31125e4944b02b3eaec267e5bc890940f0d91c03e1a098fa0f83b57e436fd5
  - MainActivity is not protected.
    - org.pathcheck.covidsafepaths.MainActivity is not protected. [android:exported=true]
  - ~~Broadcast Receiver~~
-   - [*False Positive*]. The permission is mained by the Google API used.
+   - [*False Positive*]. The permission is maintained by the Google API used.
    - Permission: com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK
    [android:exported=true]
    - To obtain an certificate for this permission, an allowlisted Google account. We assume that this account would only be granted to approved users by Google and these users are not malicious. 
