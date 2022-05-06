@@ -25,6 +25,7 @@ SHA256: 2beb14c85da568344c972a21ca6ead23c1b9d86c17a39b39d8842ebc43c0e308
   - full Internet access (android.permission.INTERNET)
   - automatically start at boot (android.permission.RECEIVE_BOOT_COMPLETED)
   - prevent phone from sleeping (android.permission.WAKE_LOCK)
+  - android.permission.USE_BIOMETRIC
 
 ### MANIFEST ANALYSIS
  - Application Data can be Backed up [android:allowBackup=true]
@@ -40,6 +41,8 @@ SHA256: 2beb14c85da568344c972a21ca6ead23c1b9d86c17a39b39d8842ebc43c0e308
     - Permission: android.permission.BIND_JOB_SERVICE[android:exported=true] 
     - Permission: android.permission.DUMP[android:exported=true]
     - False positive. Bacause these two permission are only used by Android System; and we assume that the system is not malicious.
+- `AssetPackExtractionService` is not Protected
+    - This service is provided by Google as part of the Android API.
 
 
  
@@ -74,6 +77,11 @@ This is similiar to the case in CO, that this funtion is implementing an isNight
   The input string array used in both file is hardcoded and then passed to `f2464b`; therefore, this variable should be safe from any injection as well. -->
 - [*False Positive*] ~~App creates temp file. Sensitive information should never be written into a temp file.~~
   - In `e/u/k.java`, the function `public final void c(File file)` creates the temp file to temperarely store the data for out stream channel stream. The temperary files are deleted on exit.
+- App can read/write to External Storage. Any App can read data written to External Storage.
+    - In `f/b/a/f/a/b/b2.java`, this app access the file located at the path returned by `getExternalFilesDir(null)`.
+    - This app does not include the `android:name="android.permission.WRITE_EXTERNAL_STORAGE"` permission in the manifest. This means that the user is not directly notified that the application is accessing external storage.
+- The app uses the encryption mode CBC with PKCS5/PKCS7 padding. This configuration is vulnerable to padding oracle attacks.
+  - [This Ghera vulnerability](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/) relates to encryption with a non-random initialization vector. This instance is initialized with the "androidxBiometric" key from the KeyStore. In addition, since this encryption mode uses padding, it is vulnerable to [padding oracle attacks](https://en.wikipedia.org/wiki/Padding_oracle_attack) using the Android `BadPaddingException` as the padding oracle.
 
 
 
