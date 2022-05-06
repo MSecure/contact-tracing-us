@@ -41,6 +41,23 @@ The app says it never collects, transmits, or stores personal information, but a
 [False Positive] The app is vulnerable to SQL Raw Query SQL Injection Vulnerability (https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Storage/SQLlite-RawQuery-SQLInjection-Lean/) since it uses rawQuery() to get information. 
 
 ### Deeper Analysis
+- `WakeUpService` is protected by a permission, but the protection level of the permission should be checked.
+  - Permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
+  - The permission backed by the Google Exposure Notification API 
+- `ExposureNotificationBroadcastReceiver` is protected by a permission, but the protection level of the permission should be checked.
+  - Permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
+  - The permission backed by the Google Exposure Notification API 
+- `WorkManagerGcmService` is protected by a permission, but the protection level of the permission should be checked.
+  - Permission: ``com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE``
+  - This permission is maintained by Google
+- `SystemJobService` is protected by a permission, but the protection level of the permission should be checked.
+  - permission: ``android.permission.BIND_JOB_SERVICE``
+  - This permission is protected by signature level protection where in which the system can only accepted by the system if the requesting app and the current application have the same signature. 
+- `DiagnosticsReceiver` Broadcast Receiver is protected by a permission, but the protection level of the permission should be checked.
+  - `android:permission="android.permission.DUMP"`
+  - This is protected by system ([Android documentation](https://developer.android.com/reference/android/Manifest.permission#DUMP))
+- `FirebaseInstanceIdReceiver` Broadcast Receiver is protected by a permission, but the protection level of the permissio should be checked.
+  - Permission: `com.google.android.c2dm.permission.SEND`
 - [False Positive] At first glance it seems that the IP Address is being disclosed however the app is just using a format similar to the ip addresses x.x.x.x format. We can see that it is not actually IP addresses because the constants that are used in the code come in various forms some being in the x.x.x.x.x.x.x.x.x format which is clearly not an ip address
 - Next is the rawQuery SQL vulnerability which will allow for sql injection as a function is provided that directly takes an string as an argument and puts it in to the sql database using a rawQuery.
 - The big vulnerability in the app is that it uses the SHA-1 hash function which is known to be very vulnerable. this should instead be replaced with a SHA-256 hash which is a lot more secure.
