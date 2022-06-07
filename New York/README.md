@@ -84,6 +84,8 @@ https://coronavirus.health.ny.gov/covidalert-privacy/
 
 
 ### CODE ANALYSIS
+- The App used to have a Broadcast Receiver `RNDeviceReceiver`, which is a vulnerbility we found that allows malicious app to send an explicit intent to this app and compromise the data being stored in the Sharedpreferences
+file. This Broadcast Receiver has been replaced in the newer version.
 - The App uses an insecure Random Number Generator, java.util.Random. This should be replaced by java.secure.SecureRandom instead.
 - [*False Positive*] ~~Files may contain hardcoded sensitive information like usernames, passwords, keys etc~~. After manually checked all the file containing this warning, the hardcoded information are only normal constants; no hardcoded password exists.
 - IP Address disclosure?
