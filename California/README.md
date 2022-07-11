@@ -48,6 +48,7 @@ information.
 used to identify any system user.
 
 ## Manifest Analysis
+- Application Data can be Backed up [android:allowBackup=true]. This enables anyone to backup the application data via adb (with USB debugging mode on) which might lead to potentional information leak.
 - Broadcast Receiver: ``com.google.android.apps.exposurenotification.nearby.ExposureNotificationBroadcastReceiver`` is protected by a permission but the protection level should be checked
 - Service: ``com.google.android.gms.nearby.exposurenotification.WakeUpService`` is protected by a permission but the permission level should also be checked
   - permission: ``com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK``
@@ -74,11 +75,14 @@ used to identify any system user.
 
 ## Ghera Violations:
 - [False Positive]~~This app is vulnerable to SQL Injection due to the use of rawQuery() method in the f directory of where the code lies (https://github.com/MobSF/owasp-mstg/blob/master/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2)~~ All inputs into the rawSQL methods are just constants and none of them are actual sql commands. 
-- [The app uses CBC mode for encryption](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/)
+<!-- - [The app uses CBC mode for encryption](https://bitbucket.org/secure-it-i/android-app-vulnerability-benchmarks/src/master/Crypto/BlockCipher-NonRandomIV-InformationExposure-Lean/). We found that the encryption mode in e/d/w.java is using CBC mode with PKCS5/PKCS7 padding, which is deprecated and known to be vulnerable. -->
 
 ## Code Analysis:
 - In file ``e/d/w.java`` line 37, the app uses CBC encryption mode with PKCS5/PKCS7 padding which can be vulnerable to padding oracle attacks. Also, `AES/CBC/PKCS7PADDING` is considered to be deprecated and should no longer be used according to [Android developer website](https://developer.android.com/guide/topics/security/cryptography#bc-algorithms)
 - In file `f/b/a/f/a/b/b2.java` line 44, the app writes to external storage which can lead to other apps or hackers accessing that information on the device.
-  - The file being called from external storage is being called in this line `b2.getExternalFilesDir(null)`
+  - The file being called from external storage is being called in this line `b2.getExternalFilesDir(null)`, which is `public abstract File getExternalFilesDir (String type)`
+  - (Added:) Based on the code, it seems that it's doing that 1. if String a2 doesn't exist, create a new file named as String a2 in the external storage; 2. if String a2 exist, locate the external directory; and then pass the file directory to create a new Object a2(). 
+  - Based on the code in `a2.java` in the same folder, it seems this file is used to update the application itself from Google playstore. We can find there is a custom Bundle function and many helper functions in `a2.java`.
+  - According to Android official developers' site, no security enforced with these files (used by getExternalFilesDir()) and any application holding `Manifest.permission.WRITE_EXTERNAL_STORAGE` can write to these files.
 - The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 
