@@ -82,7 +82,7 @@ used to identify any system user.
 - In file `f/b/a/f/a/b/b2.java` line 44, the app writes to external storage which can lead to other apps or hackers accessing that information on the device.
   - The file being called from external storage is being called in this line `b2.getExternalFilesDir(null)`, which is `public abstract File getExternalFilesDir (String type)`
   - (Added:) Based on the code, it seems that it's doing that 1. if String a2 doesn't exist, create a new file named as String a2 in the external storage; 2. if String a2 exist, locate the external directory; and then pass the file directory to create a new Object a2(). 
-  - Based on the code in `a2.java` in the same folder, it seems this file is used to update the application itself from Google playstore. We can find there is a custom Bundle function and many helper functions in `a2.java`.
+  - Based on the code in `a2.java` in the same folder, it seems this file is used to update the application itself from Google playstore. We can find there is a custom Bundle function and many helper functions in `a2.java`. Inside Bundle function, there are code that putting the downloading info together and post them to google play store.
   - According to Android official developers' site, no security enforced with these files (used by getExternalFilesDir()) and any application holding `Manifest.permission.WRITE_EXTERNAL_STORAGE` can write to these files.
 - The app uses Java's library, `java.util.Random`, this library uses a protected algorithm to generate 32 pseudorandom bits: https://developer.android.com/reference/java/util/Random.-> should use SecureRandom Generator (this is a small error apart of Code Vulnerability).
 
